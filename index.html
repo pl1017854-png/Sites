@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COSMOS — Uma Jornada pelo Universo</title>
+  <meta name="description" content="Uma experiência imersiva pelo universo, com animações de scroll e efeitos especiais." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%237c6cff'/%3E%3Cellipse cx='50' cy='50' rx='48' ry='14' fill='none' stroke='%234dd6ff' stroke-width='5' transform='rotate(-18 50 50)'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══ Preloader ═══ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__orbit">
+      <div class="preloader__planet"></div>
+      <div class="preloader__moon"></div>
+    </div>
+    <p class="preloader__text">Iniciando jornada<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+  </div>
+
+  <!-- ═══ Efeitos globais ═══ -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <canvas id="starfield"></canvas>
+
+  <!-- ═══ Navegação ═══ -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__logo" data-magnetic>✦ COSMOS</a>
+    <ul class="nav__links">
+      <li><a href="#sobre" data-magnetic>Origem</a></li>
+      <li><a href="#planetas" data-magnetic>Planetas</a></li>
+      <li><a href="#jornada" data-magnetic>Jornada</a></li>
+      <li><a href="#contato" data-magnetic class="nav__cta">Embarcar</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ Hero ═══ -->
+  <header class="hero" id="hero">
+    <div class="hero__content" data-parallax-depth="0.3">
+      <p class="hero__eyebrow reveal">EXPERIÊNCIA IMERSIVA</p>
+      <h1 class="hero__title" id="heroTitle">COSMOS</h1>
+      <p class="hero__subtitle reveal" data-delay="600">
+        Role para atravessar <span class="glow-text">13,8 bilhões de anos</span> de história cósmica
+      </p>
+    </div>
+    <div class="hero__scroll-hint">
+      <div class="mouse"><div class="mouse__wheel"></div></div>
+      <span>Role para explorar</span>
+    </div>
+    <div class="hero__gradient"></div>
+  </header>
+
+  <main>
+    <!-- ═══ Origem / texto reveal ═══ -->
+    <section class="section origin" id="sobre">
+      <div class="container">
+        <h2 class="split-lines big-statement">
+          <span class="line">No início, havia apenas</span>
+          <span class="line"><em class="glow-text">um ponto infinito</em> de energia.</span>
+          <span class="line">Então, tudo explodiu em existência.</span>
+        </h2>
+        <div class="origin__grid">
+          <div class="origin__card reveal" data-delay="0">
+            <span class="origin__num">01</span>
+            <h3>Big Bang</h3>
+            <p>Em uma fração de segundo, o universo se expandiu de algo menor que um átomo para algo maior que uma galáxia.</p>
+          </div>
+          <div class="origin__card reveal" data-delay="150">
+            <span class="origin__num">02</span>
+            <h3>Primeiras Estrelas</h3>
+            <p>Gigantes azuis nasceram das nuvens primordiais de hidrogênio, forjando os primeiros elementos pesados.</p>
+          </div>
+          <div class="origin__card reveal" data-delay="300">
+            <span class="origin__num">03</span>
+            <h3>Galáxias</h3>
+            <p>A gravidade teceu bilhões de estrelas em espirais majestosas que dançam pelo vazio há eras.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Contadores ═══ -->
+    <section class="section stats">
+      <div class="stats__glow" data-parallax-depth="0.15"></div>
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <span class="stat__value" data-count="13.8" data-decimals="1">0</span>
+          <span class="stat__unit">bilhões de anos</span>
+          <span class="stat__label">Idade do universo</span>
+        </div>
+        <div class="stat reveal" data-delay="150">
+          <span class="stat__value" data-count="200" data-suffix="+">0</span>
+          <span class="stat__unit">bilhões</span>
+          <span class="stat__label">Galáxias observáveis</span>
+        </div>
+        <div class="stat reveal" data-delay="300">
+          <span class="stat__value" data-count="299792">0</span>
+          <span class="stat__unit">km/s</span>
+          <span class="stat__label">Velocidade da luz</span>
+        </div>
+        <div class="stat reveal" data-delay="450">
+          <span class="stat__value" data-count="93" data-suffix=" bi">0</span>
+          <span class="stat__unit">anos-luz</span>
+          <span class="stat__label">Diâmetro observável</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Planetas / cards 3D ═══ -->
+    <section class="section planets" id="planetas">
+      <div class="container">
+        <p class="section__eyebrow reveal">SISTEMA SOLAR</p>
+        <h2 class="section__title split-chars" id="planetsTitle">Vizinhos Cósmicos</h2>
+        <div class="planets__grid">
+          <article class="planet-card reveal" data-tilt data-delay="0">
+            <div class="planet-card__sphere planet-card__sphere--mercury"></div>
+            <h3>Mercúrio</h3>
+            <p>O mensageiro veloz. Um ano aqui dura apenas 88 dias terrestres.</p>
+            <span class="planet-card__tag">57,9 mi km do Sol</span>
+          </article>
+          <article class="planet-card reveal" data-tilt data-delay="120">
+            <div class="planet-card__sphere planet-card__sphere--venus"></div>
+            <h3>Vênus</h3>
+            <p>A estrela da manhã. Sua atmosfera densa esconde um mundo de 465&nbsp;°C.</p>
+            <span class="planet-card__tag">108,2 mi km do Sol</span>
+          </article>
+          <article class="planet-card reveal" data-tilt data-delay="240">
+            <div class="planet-card__sphere planet-card__sphere--earth"></div>
+            <h3>Terra</h3>
+            <p>O ponto azul-claro. O único lugar conhecido onde a vida floresce.</p>
+            <span class="planet-card__tag">149,6 mi km do Sol</span>
+          </article>
+          <article class="planet-card reveal" data-tilt data-delay="360">
+            <div class="planet-card__sphere planet-card__sphere--mars"></div>
+            <h3>Marte</h3>
+            <p>O planeta vermelho. Nosso próximo destino na exploração espacial.</p>
+            <span class="planet-card__tag">227,9 mi km do Sol</span>
+          </article>
+          <article class="planet-card reveal" data-tilt data-delay="480">
+            <div class="planet-card__sphere planet-card__sphere--jupiter"></div>
+            <h3>Júpiter</h3>
+            <p>O gigante guardião. Sua gravidade protege os planetas internos.</p>
+            <span class="planet-card__tag">778,5 mi km do Sol</span>
+          </article>
+          <article class="planet-card reveal" data-tilt data-delay="600">
+            <div class="planet-card__sphere planet-card__sphere--saturn"><span class="ring"></span></div>
+            <h3>Saturno</h3>
+            <p>O senhor dos anéis. Bilhões de fragmentos de gelo em órbita perfeita.</p>
+            <span class="planet-card__tag">1,43 bi km do Sol</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Scroll horizontal / jornada ═══ -->
+    <section class="journey" id="jornada">
+      <div class="journey__sticky">
+        <div class="journey__track" id="journeyTrack">
+          <div class="journey__panel">
+            <span class="journey__year">Ano 0</span>
+            <h3>O Grande Início</h3>
+            <p>Toda a matéria, energia, espaço e tempo emergem de uma singularidade.</p>
+          </div>
+          <div class="journey__panel">
+            <span class="journey__year">+380 mil anos</span>
+            <h3>A Primeira Luz</h3>
+            <p>O universo esfria o suficiente para a luz viajar livremente — a radiação cósmica de fundo.</p>
+          </div>
+          <div class="journey__panel">
+            <span class="journey__year">+200 mi anos</span>
+            <h3>Amanhecer Estelar</h3>
+            <p>As primeiras estrelas acendem, encerrando a era das trevas cósmicas.</p>
+          </div>
+          <div class="journey__panel">
+            <span class="journey__year">+9,2 bi anos</span>
+            <h3>Nasce o Sol</h3>
+            <p>Nossa estrela se forma de uma nuvem de gás e poeira de gerações estelares anteriores.</p>
+          </div>
+          <div class="journey__panel">
+            <span class="journey__year">Hoje</span>
+            <h3>Você está aqui</h3>
+            <p>Átomos forjados em estrelas, contemplando as próprias origens. Nós somos o universo se conhecendo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Parallax final / CTA ═══ -->
+    <section class="finale" id="contato">
+      <div class="finale__planet" data-parallax-depth="0.25"></div>
+      <div class="finale__content">
+        <h2 class="split-lines big-statement">
+          <span class="line">Somos poeira de estrelas</span>
+          <span class="line">olhando para <em class="glow-text">casa</em>.</span>
+        </h2>
+        <a href="#hero" class="btn-launch reveal" data-magnetic id="btnTop">
+          <span>Recomeçar a jornada</span> 🚀
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__marquee" aria-hidden="true">
+      <div class="footer__marquee-track">
+        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
+        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
+      </div>
+    </div>
+    <p>COSMOS — feito com vanilla HTML, CSS e JS. Sem bibliotecas, só física e imaginação.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
