@@ -3,216 +3,320 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COSMOS — Uma Jornada pelo Universo</title>
-  <meta name="description" content="Uma experiência imersiva pelo universo, com animações de scroll e efeitos especiais." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%237c6cff'/%3E%3Cellipse cx='50' cy='50' rx='48' ry='14' fill='none' stroke='%234dd6ff' stroke-width='5' transform='rotate(-18 50 50)'/%3E%3C/svg%3E" />
+  <title>Navalha de Ouro — Barbearia Premium</title>
+  <meta name="description" content="Barbearia premium: cortes clássicos e modernos, barboterapia e experiência de primeira classe. Agende seu horário." />
+  <!-- Favicon: tesoura dourada em SVG inline -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E✂%3C/text%3E%3C/svg%3E" />
+  <!-- Google Fonts: Playfair Display (títulos elegantes) + Poppins (texto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ═══ Preloader ═══ -->
-  <div class="preloader" id="preloader">
-    <div class="preloader__orbit">
-      <div class="preloader__planet"></div>
-      <div class="preloader__moon"></div>
-    </div>
-    <p class="preloader__text">Iniciando jornada<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
-  </div>
-
-  <!-- ═══ Efeitos globais ═══ -->
+  <!-- ═══════════ Barra de progresso do scroll ═══════════ -->
   <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <canvas id="starfield"></canvas>
 
-  <!-- ═══ Navegação ═══ -->
-  <nav class="nav" id="nav">
-    <a href="#hero" class="nav__logo" data-magnetic>✦ COSMOS</a>
-    <ul class="nav__links">
-      <li><a href="#sobre" data-magnetic>Origem</a></li>
-      <li><a href="#planetas" data-magnetic>Planetas</a></li>
-      <li><a href="#jornada" data-magnetic>Jornada</a></li>
-      <li><a href="#contato" data-magnetic class="nav__cta">Embarcar</a></li>
-    </ul>
-  </nav>
+  <!-- ═══════════ Header / Navegação ═══════════ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#inicio" class="nav__logo">
+        <span class="nav__logo-icon">✂</span>
+        Navalha <em>de Ouro</em>
+      </a>
 
-  <!-- ═══ Hero ═══ -->
-  <header class="hero" id="hero">
-    <div class="hero__content" data-parallax-depth="0.3">
-      <p class="hero__eyebrow reveal">EXPERIÊNCIA IMERSIVA</p>
-      <h1 class="hero__title" id="heroTitle">COSMOS</h1>
-      <p class="hero__subtitle reveal" data-delay="600">
-        Role para atravessar <span class="glow-text">13,8 bilhões de anos</span> de história cósmica
-      </p>
+      <nav class="nav__menu" id="navMenu" aria-label="Navegação principal">
+        <a href="#inicio" class="nav__link is-active">Início</a>
+        <a href="#sobre" class="nav__link">Sobre</a>
+        <a href="#servicos" class="nav__link">Serviços</a>
+        <a href="#galeria" class="nav__link">Galeria</a>
+        <a href="#depoimentos" class="nav__link">Depoimentos</a>
+        <a href="#contato" class="nav__link">Contato</a>
+        <a href="#contato" class="btn btn--gold nav__cta">Agendar horário</a>
+      </nav>
+
+      <!-- Botão hamburger (mobile) -->
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="hero__scroll-hint">
-      <div class="mouse"><div class="mouse__wheel"></div></div>
-      <span>Role para explorar</span>
-    </div>
-    <div class="hero__gradient"></div>
   </header>
 
   <main>
-    <!-- ═══ Origem / texto reveal ═══ -->
-    <section class="section origin" id="sobre">
-      <div class="container">
-        <h2 class="split-lines big-statement">
-          <span class="line">No início, havia apenas</span>
-          <span class="line"><em class="glow-text">um ponto infinito</em> de energia.</span>
-          <span class="line">Então, tudo explodiu em existência.</span>
-        </h2>
-        <div class="origin__grid">
-          <div class="origin__card reveal" data-delay="0">
-            <span class="origin__num">01</span>
-            <h3>Big Bang</h3>
-            <p>Em uma fração de segundo, o universo se expandiu de algo menor que um átomo para algo maior que uma galáxia.</p>
+    <!-- ═══════════ Hero ═══════════ -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content">
+        <p class="hero__eyebrow reveal">— DESDE 1998 —</p>
+        <h1 class="hero__title">
+          <span class="reveal" data-delay="100">Estilo é um</span>
+          <span class="reveal hero__title-gold" data-delay="250">ritual diário.</span>
+        </h1>
+        <p class="hero__subtitle reveal" data-delay="400">
+          Cortes clássicos e modernos, barboterapia com toalha quente e o melhor
+          atendimento da cidade. Sua melhor versão começa na cadeira.
+        </p>
+        <div class="hero__actions reveal" data-delay="550">
+          <a href="#contato" class="btn btn--gold btn--lg">Agendar meu horário</a>
+          <a href="#servicos" class="btn btn--ghost btn--lg">Ver serviços</a>
+        </div>
+        <div class="hero__badges reveal" data-delay="700">
+          <div class="hero__badge"><strong>4.9★</strong><span>no Google</span></div>
+          <div class="hero__badge"><strong>25+</strong><span>anos de tradição</span></div>
+          <div class="hero__badge"><strong>15 mil</strong><span>clientes atendidos</span></div>
+        </div>
+      </div>
+      <a href="#sobre" class="hero__scroll" aria-label="Rolar para a próxima seção">
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ═══════════ Sobre ═══════════ -->
+    <section class="section about" id="sobre">
+      <div class="container about__grid">
+        <div class="about__media reveal">
+          <!-- "Retrato" da barbearia feito em CSS/SVG — sem imagens externas -->
+          <div class="about__frame">
+            <div class="about__portrait" aria-hidden="true">
+              <svg viewBox="0 0 200 240" class="about__icon">
+                <g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                  <circle cx="70" cy="180" r="22"/>
+                  <circle cx="130" cy="180" r="22"/>
+                  <path d="M84 164 L118 60 M116 164 L82 60"/>
+                  <path d="M82 60 L74 34 M118 60 L126 34"/>
+                </g>
+              </svg>
+            </div>
+            <span class="about__frame-year">EST. 1998</span>
           </div>
-          <div class="origin__card reveal" data-delay="150">
-            <span class="origin__num">02</span>
-            <h3>Primeiras Estrelas</h3>
-            <p>Gigantes azuis nasceram das nuvens primordiais de hidrogênio, forjando os primeiros elementos pesados.</p>
-          </div>
-          <div class="origin__card reveal" data-delay="300">
-            <span class="origin__num">03</span>
-            <h3>Galáxias</h3>
-            <p>A gravidade teceu bilhões de estrelas em espirais majestosas que dançam pelo vazio há eras.</p>
-          </div>
+        </div>
+        <div class="about__text">
+          <p class="section__eyebrow reveal">SOBRE NÓS</p>
+          <h2 class="section__title reveal" data-delay="100">Tradição que se renova a cada corte</h2>
+          <p class="reveal" data-delay="200">
+            Há mais de duas décadas, a <strong>Navalha de Ouro</strong> une a tradição da
+            barbearia clássica ao estilo contemporâneo. Cada cliente recebe atenção
+            individual, do primeiro café ao acabamento na navalha.
+          </p>
+          <p class="reveal" data-delay="300">
+            Nossa equipe é formada por mestres barbeiros certificados, apaixonados pelo
+            ofício e sempre atualizados com as últimas tendências.
+          </p>
+          <ul class="about__list">
+            <li class="reveal" data-delay="350">Produtos premium importados</li>
+            <li class="reveal" data-delay="450">Ambiente climatizado com bar e lounge</li>
+            <li class="reveal" data-delay="550">Agendamento online sem fila</li>
+          </ul>
+          <a href="#contato" class="btn btn--gold reveal" data-delay="650">Conheça a experiência</a>
         </div>
       </div>
     </section>
 
-    <!-- ═══ Contadores ═══ -->
-    <section class="section stats">
-      <div class="stats__glow" data-parallax-depth="0.15"></div>
+    <!-- ═══════════ Serviços ═══════════ -->
+    <section class="section services" id="servicos">
+      <div class="container">
+        <p class="section__eyebrow reveal">SERVIÇOS</p>
+        <h2 class="section__title reveal" data-delay="100">O que fazemos de melhor</h2>
+        <div class="services__grid">
+          <article class="service-card reveal" data-delay="0">
+            <span class="service-card__icon">✂</span>
+            <h3>Corte Clássico</h3>
+            <p>Tesoura e máquina com acabamento perfeito, lavagem e finalização inclusas.</p>
+            <span class="service-card__price">R$ 55</span>
+          </article>
+          <article class="service-card reveal" data-delay="120">
+            <span class="service-card__icon">🪒</span>
+            <h3>Barboterapia</h3>
+            <p>Barba desenhada na navalha com toalha quente, óleos e massagem facial.</p>
+            <span class="service-card__price">R$ 45</span>
+          </article>
+          <article class="service-card service-card--featured reveal" data-delay="240">
+            <span class="service-card__tag">MAIS PEDIDO</span>
+            <span class="service-card__icon">👑</span>
+            <h3>Combo Ouro</h3>
+            <p>Corte + barba + sobrancelha + hidratação. A experiência completa da casa.</p>
+            <span class="service-card__price">R$ 89</span>
+          </article>
+          <article class="service-card reveal" data-delay="360">
+            <span class="service-card__icon">✨</span>
+            <h3>Tratamentos</h3>
+            <p>Hidratação capilar, camuflagem de grisalhos, limpeza de pele e mais.</p>
+            <span class="service-card__price">a partir de R$ 35</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ Números (contadores animados) ═══════════ -->
+    <section class="stats">
       <div class="container stats__grid">
         <div class="stat reveal">
-          <span class="stat__value" data-count="13.8" data-decimals="1">0</span>
-          <span class="stat__unit">bilhões de anos</span>
-          <span class="stat__label">Idade do universo</span>
+          <span class="stat__value" data-count="25" data-suffix="+">0</span>
+          <span class="stat__label">Anos de história</span>
         </div>
-        <div class="stat reveal" data-delay="150">
-          <span class="stat__value" data-count="200" data-suffix="+">0</span>
-          <span class="stat__unit">bilhões</span>
-          <span class="stat__label">Galáxias observáveis</span>
+        <div class="stat reveal" data-delay="120">
+          <span class="stat__value" data-count="15000" data-suffix="+">0</span>
+          <span class="stat__label">Clientes atendidos</span>
         </div>
-        <div class="stat reveal" data-delay="300">
-          <span class="stat__value" data-count="299792">0</span>
-          <span class="stat__unit">km/s</span>
-          <span class="stat__label">Velocidade da luz</span>
+        <div class="stat reveal" data-delay="240">
+          <span class="stat__value" data-count="8">0</span>
+          <span class="stat__label">Mestres barbeiros</span>
         </div>
-        <div class="stat reveal" data-delay="450">
-          <span class="stat__value" data-count="93" data-suffix=" bi">0</span>
-          <span class="stat__unit">anos-luz</span>
-          <span class="stat__label">Diâmetro observável</span>
+        <div class="stat reveal" data-delay="360">
+          <span class="stat__value" data-count="4.9" data-decimals="1">0</span>
+          <span class="stat__label">Avaliação média</span>
         </div>
       </div>
     </section>
 
-    <!-- ═══ Planetas / cards 3D ═══ -->
-    <section class="section planets" id="planetas">
+    <!-- ═══════════ Galeria ═══════════ -->
+    <section class="section gallery" id="galeria">
       <div class="container">
-        <p class="section__eyebrow reveal">SISTEMA SOLAR</p>
-        <h2 class="section__title split-chars" id="planetsTitle">Vizinhos Cósmicos</h2>
-        <div class="planets__grid">
-          <article class="planet-card reveal" data-tilt data-delay="0">
-            <div class="planet-card__sphere planet-card__sphere--mercury"></div>
-            <h3>Mercúrio</h3>
-            <p>O mensageiro veloz. Um ano aqui dura apenas 88 dias terrestres.</p>
-            <span class="planet-card__tag">57,9 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="120">
-            <div class="planet-card__sphere planet-card__sphere--venus"></div>
-            <h3>Vênus</h3>
-            <p>A estrela da manhã. Sua atmosfera densa esconde um mundo de 465&nbsp;°C.</p>
-            <span class="planet-card__tag">108,2 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="240">
-            <div class="planet-card__sphere planet-card__sphere--earth"></div>
-            <h3>Terra</h3>
-            <p>O ponto azul-claro. O único lugar conhecido onde a vida floresce.</p>
-            <span class="planet-card__tag">149,6 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="360">
-            <div class="planet-card__sphere planet-card__sphere--mars"></div>
-            <h3>Marte</h3>
-            <p>O planeta vermelho. Nosso próximo destino na exploração espacial.</p>
-            <span class="planet-card__tag">227,9 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="480">
-            <div class="planet-card__sphere planet-card__sphere--jupiter"></div>
-            <h3>Júpiter</h3>
-            <p>O gigante guardião. Sua gravidade protege os planetas internos.</p>
-            <span class="planet-card__tag">778,5 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="600">
-            <div class="planet-card__sphere planet-card__sphere--saturn"><span class="ring"></span></div>
-            <h3>Saturno</h3>
-            <p>O senhor dos anéis. Bilhões de fragmentos de gelo em órbita perfeita.</p>
-            <span class="planet-card__tag">1,43 bi km do Sol</span>
-          </article>
+        <p class="section__eyebrow reveal">GALERIA</p>
+        <h2 class="section__title reveal" data-delay="100">Nosso trabalho fala por nós</h2>
+        <div class="gallery__grid">
+          <!-- Peças visuais em CSS puro (troque por <img> reais quando tiver fotos) -->
+          <figure class="gallery__item gallery__item--tall reveal" data-delay="0">
+            <div class="gallery__art gallery__art--1"><span>✂</span></div>
+            <figcaption>Degradê navalhado</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" data-delay="100">
+            <div class="gallery__art gallery__art--2"><span>🪒</span></div>
+            <figcaption>Barba esculpida</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" data-delay="200">
+            <div class="gallery__art gallery__art--3"><span>💈</span></div>
+            <figcaption>Clássico americano</figcaption>
+          </figure>
+          <figure class="gallery__item gallery__item--wide reveal" data-delay="300">
+            <div class="gallery__art gallery__art--4"><span>👑</span></div>
+            <figcaption>Combo Ouro completo</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" data-delay="400">
+            <div class="gallery__art gallery__art--5"><span>✨</span></div>
+            <figcaption>Acabamento premium</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ═══ Scroll horizontal / jornada ═══ -->
-    <section class="journey" id="jornada">
-      <div class="journey__sticky">
-        <div class="journey__track" id="journeyTrack">
-          <div class="journey__panel">
-            <span class="journey__year">Ano 0</span>
-            <h3>O Grande Início</h3>
-            <p>Toda a matéria, energia, espaço e tempo emergem de uma singularidade.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">+380 mil anos</span>
-            <h3>A Primeira Luz</h3>
-            <p>O universo esfria o suficiente para a luz viajar livremente — a radiação cósmica de fundo.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">+200 mi anos</span>
-            <h3>Amanhecer Estelar</h3>
-            <p>As primeiras estrelas acendem, encerrando a era das trevas cósmicas.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">+9,2 bi anos</span>
-            <h3>Nasce o Sol</h3>
-            <p>Nossa estrela se forma de uma nuvem de gás e poeira de gerações estelares anteriores.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">Hoje</span>
-            <h3>Você está aqui</h3>
-            <p>Átomos forjados em estrelas, contemplando as próprias origens. Nós somos o universo se conhecendo.</p>
-          </div>
+    <!-- ═══════════ Depoimentos ═══════════ -->
+    <section class="section testimonials" id="depoimentos">
+      <div class="container">
+        <p class="section__eyebrow reveal">DEPOIMENTOS</p>
+        <h2 class="section__title reveal" data-delay="100">Quem senta na cadeira, volta</h2>
+        <div class="testimonials__grid">
+          <blockquote class="testimonial reveal" data-delay="0">
+            <div class="testimonial__stars">★★★★★</div>
+            <p>“Melhor barbearia da cidade, sem discussão. O combo com toalha quente é outro nível — saio de lá renovado toda semana.”</p>
+            <footer>
+              <span class="testimonial__avatar">RC</span>
+              <div><strong>Rafael Costa</strong><small>Cliente há 6 anos</small></div>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial reveal" data-delay="150">
+            <div class="testimonial__stars">★★★★★</div>
+            <p>“Atendimento impecável e pontualidade total. Agendei pelo site, cheguei e fui atendido na hora. Virou meu programa de sexta.”</p>
+            <footer>
+              <span class="testimonial__avatar">DM</span>
+              <div><strong>Diego Martins</strong><small>Cliente há 2 anos</small></div>
+            </footer>
+          </blockquote>
+          <blockquote class="testimonial reveal" data-delay="300">
+            <div class="testimonial__stars">★★★★★</div>
+            <p>“Levei meu filho para o primeiro corte e a equipe transformou o momento numa festa. Profissionais e humanos. Recomendo demais.”</p>
+            <footer>
+              <span class="testimonial__avatar">AS</span>
+              <div><strong>André Silveira</strong><small>Cliente há 4 anos</small></div>
+            </footer>
+          </blockquote>
         </div>
       </div>
     </section>
 
-    <!-- ═══ Parallax final / CTA ═══ -->
-    <section class="finale" id="contato">
-      <div class="finale__planet" data-parallax-depth="0.25"></div>
-      <div class="finale__content">
-        <h2 class="split-lines big-statement">
-          <span class="line">Somos poeira de estrelas</span>
-          <span class="line">olhando para <em class="glow-text">casa</em>.</span>
-        </h2>
-        <a href="#hero" class="btn-launch reveal" data-magnetic id="btnTop">
-          <span>Recomeçar a jornada</span> 🚀
-        </a>
+    <!-- ═══════════ CTA banner ═══════════ -->
+    <section class="cta-banner">
+      <div class="container cta-banner__inner reveal">
+        <h2>Pronto para elevar o seu estilo?</h2>
+        <p>Agende agora e ganhe <strong>10% de desconto</strong> na primeira visita.</p>
+        <a href="#contato" class="btn btn--dark btn--lg">Quero meu horário</a>
+      </div>
+    </section>
+
+    <!-- ═══════════ Contato ═══════════ -->
+    <section class="section contact" id="contato">
+      <div class="container contact__grid">
+        <div class="contact__info">
+          <p class="section__eyebrow reveal">CONTATO</p>
+          <h2 class="section__title reveal" data-delay="100">Agende seu horário</h2>
+          <p class="reveal" data-delay="200">
+            Preencha o formulário ou chame no WhatsApp. Respondemos em minutos
+            durante o horário comercial.
+          </p>
+          <ul class="contact__list">
+            <li class="reveal" data-delay="250"><span>📍</span> Rua das Tesouras, 123 — Centro</li>
+            <li class="reveal" data-delay="350"><span>📞</span> (11) 99999-8888</li>
+            <li class="reveal" data-delay="450"><span>🕘</span> Seg–Sáb: 9h às 20h</li>
+            <li class="reveal" data-delay="550"><span>✉️</span> contato@navalhadeouro.com.br</li>
+          </ul>
+        </div>
+
+        <!-- Formulário visual: valida os campos e simula o envio no JS -->
+        <form class="contact__form reveal" id="contactForm" novalidate>
+          <div class="form__row">
+            <div class="form__field">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+            </div>
+            <div class="form__field">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required />
+            </div>
+          </div>
+          <div class="form__field">
+            <label for="servico">Serviço desejado</label>
+            <select id="servico" name="servico" required>
+              <option value="" disabled selected>Selecione…</option>
+              <option>Corte Clássico</option>
+              <option>Barboterapia</option>
+              <option>Combo Ouro</option>
+              <option>Tratamentos</option>
+            </select>
+          </div>
+          <div class="form__field">
+            <label for="mensagem">Mensagem (opcional)</label>
+            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Dia e horário de preferência…"></textarea>
+          </div>
+          <button type="submit" class="btn btn--gold btn--lg form__submit">Enviar agendamento</button>
+          <p class="form__feedback" id="formFeedback" role="status"></p>
+        </form>
       </div>
     </section>
   </main>
 
+  <!-- ═══════════ Footer ═══════════ -->
   <footer class="footer">
-    <div class="footer__marquee" aria-hidden="true">
-      <div class="footer__marquee-track">
-        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
-        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
+    <div class="container footer__grid">
+      <div>
+        <a href="#inicio" class="nav__logo footer__logo">
+          <span class="nav__logo-icon">✂</span> Navalha <em>de Ouro</em>
+        </a>
+        <p class="footer__tagline">Tradição, estilo e precisão desde 1998.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Links do rodapé">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
       </div>
     </div>
-    <p>COSMOS — feito com vanilla HTML, CSS e JS. Sem bibliotecas, só física e imaginação.</p>
+    <p class="footer__copy">© 2026 Navalha de Ouro. Todos os direitos reservados.</p>
   </footer>
 
   <script src="js/main.js"></script>
