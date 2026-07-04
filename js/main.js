@@ -1,279 +1,203 @@
 /* ═══════════════════════════════════════════
-   COSMOS — Animações de scroll e efeitos
+   Lua Encantada™ — interações da landing page
    Vanilla JS, zero dependências
    ═══════════════════════════════════════════ */
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* ─── Preloader ─── */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('preloader').classList.add('is-done');
-  }, prefersReducedMotion ? 0 : 900);
-});
-
-/* ─── Starfield: estrelas em parallax + estrelas cadentes ─── */
 (() => {
-  const canvas = document.getElementById('starfield');
-  const ctx = canvas.getContext('2d');
-  let w, h, stars = [], shooting = [];
-  let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-  let scrollY = 0;
+  "use strict";
 
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-    stars = [];
-    const count = Math.min(320, Math.floor((w * h) / 4500));
-    for (let i = 0; i < count; i++) {
-      stars.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        z: Math.random(),                 // profundidade 0..1
-        r: Math.random() * 1.6 + 0.3,
-        tw: Math.random() * Math.PI * 2,  // fase do brilho
-        tws: 0.5 + Math.random() * 2,     // velocidade do brilho
-      });
-    }
-  }
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function spawnShootingStar() {
-    if (document.hidden || prefersReducedMotion) return;
-    shooting.push({
-      x: Math.random() * w * 0.8,
-      y: Math.random() * h * 0.35,
-      vx: 7 + Math.random() * 6,
-      vy: 3 + Math.random() * 3,
-      life: 1,
-    });
-  }
+  /* ─── Céu estrelado ─── */
+  const canvas = document.getElementById("starfield");
+  if (canvas && !reduceMotion) {
+    const ctx = canvas.getContext("2d");
+    let stars = [];
 
-  window.addEventListener('resize', resize);
-  window.addEventListener('mousemove', (e) => {
-    targetX = (e.clientX / w - 0.5) * 2;
-    targetY = (e.clientY / h - 0.5) * 2;
-  });
-  window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
-  setInterval(spawnShootingStar, 2800);
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const count = Math.min(220, Math.floor((canvas.width * canvas.height) / 9000));
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.3 + 0.2,
+        tw: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.015 + 0.004,
+      }));
+    };
+    resize();
+    window.addEventListener("resize", resize);
 
-  let t = 0;
-  function frame() {
-    t += 0.016;
-    mouseX += (targetX - mouseX) * 0.05;
-    mouseY += (targetY - mouseY) * 0.05;
-    ctx.clearRect(0, 0, w, h);
-
-    for (const s of stars) {
-      const depth = 0.3 + s.z * 0.7;
-      // estrelas distantes se movem menos: parallax de mouse e de scroll
-      const px = s.x + mouseX * 30 * depth;
-      const py = ((s.y + mouseY * 20 * depth - scrollY * 0.15 * depth) % h + h) % h;
-      const twinkle = 0.55 + 0.45 * Math.sin(s.tw + t * s.tws);
-      ctx.beginPath();
-      ctx.arc(px, py, s.r * depth, 0, Math.PI * 2);
-      const hue = 220 + s.z * 60;
-      ctx.fillStyle = `hsla(${hue}, 80%, ${70 + s.z * 20}%, ${twinkle * (0.35 + depth * 0.5)})`;
-      ctx.fill();
-    }
-
-    shooting = shooting.filter((m) => m.life > 0);
-    for (const m of shooting) {
-      m.x += m.vx; m.y += m.vy; m.life -= 0.018;
-      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.vx * 10, m.y - m.vy * 10);
-      grad.addColorStop(0, `rgba(180, 220, 255, ${m.life})`);
-      grad.addColorStop(1, 'rgba(180, 220, 255, 0)');
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(m.x, m.y);
-      ctx.lineTo(m.x - m.vx * 10, m.y - m.vy * 10);
-      ctx.stroke();
-    }
-
-    requestAnimationFrame(frame);
-  }
-
-  resize();
-  if (!prefersReducedMotion) frame();
-  else { // versão estática para quem prefere menos movimento
-    for (const s of stars) {
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(200, 210, 255, .5)';
-      ctx.fill();
-    }
-  }
-})();
-
-/* ─── Cursor customizado + botões magnéticos ─── */
-(() => {
-  if (window.matchMedia('(hover: none)').matches) return;
-  const cursor = document.getElementById('cursor');
-  const glow = document.getElementById('cursorGlow');
-  let cx = -100, cy = -100, gx = -100, gy = -100, tx = -100, ty = -100;
-
-  window.addEventListener('mousemove', (e) => { tx = e.clientX; ty = e.clientY; });
-
-  (function move() {
-    cx += (tx - cx) * 0.35;
-    cy += (ty - cy) * 0.35;
-    gx += (tx - gx) * 0.08;
-    gy += (ty - gy) * 0.08;
-    cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
-    glow.style.transform = `translate(${gx}px, ${gy}px) translate(-50%, -50%)`;
-    requestAnimationFrame(move);
-  })();
-
-  document.querySelectorAll('a, button, [data-tilt]').forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
-  });
-
-  // efeito magnético: o elemento é atraído pelo cursor
-  document.querySelectorAll('[data-magnetic]').forEach((el) => {
-    el.addEventListener('mousemove', (e) => {
-      const r = el.getBoundingClientRect();
-      const dx = e.clientX - (r.left + r.width / 2);
-      const dy = e.clientY - (r.top + r.height / 2);
-      el.style.transform = `translate(${dx * 0.25}px, ${dy * 0.25}px)`;
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transition = 'transform .4s cubic-bezier(.2,.9,.3,1.4)';
-      el.style.transform = '';
-      setTimeout(() => (el.style.transition = ''), 400);
-    });
-  });
-})();
-
-/* ─── Split de texto: hero (animado no load) e títulos (no scroll) ─── */
-(() => {
-  function splitChars(el, baseDelay = 0) {
-    const text = el.textContent;
-    el.textContent = '';
-    el.setAttribute('aria-label', text);
-    [...text].forEach((ch, i) => {
-      const span = document.createElement('span');
-      span.className = 'char';
-      span.textContent = ch === ' ' ? ' ' : ch;
-      span.style.setProperty('--i', i);
-      span.setAttribute('aria-hidden', 'true');
-      if (baseDelay) span.style.animationDelay = `${baseDelay + i * 90}ms`;
-      el.appendChild(span);
-    });
-  }
-  splitChars(document.getElementById('heroTitle'), 1100);
-  splitChars(document.getElementById('planetsTitle'));
-})();
-
-/* ─── Reveals com IntersectionObserver ─── */
-(() => {
-  const io = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const el = entry.target;
-      const delay = parseInt(el.dataset.delay || 0, 10);
-      el.style.setProperty('--d', `${delay}ms`);
-      el.classList.add('is-visible');
-      io.unobserve(el);
-      // depois do reveal, zera o atraso para não afetar transições de hover
-      setTimeout(() => el.style.setProperty('--d', '0ms'), delay + 1000);
-    }
-  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
-
-  document.querySelectorAll('.reveal, .split-lines, .split-chars').forEach((el) => io.observe(el));
-})();
-
-/* ─── Contadores animados ─── */
-(() => {
-  const easeOut = (p) => 1 - Math.pow(1 - p, 4);
-  const io = new IntersectionObserver((entries) => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const el = entry.target;
-      io.unobserve(el);
-      const target = parseFloat(el.dataset.count);
-      const decimals = parseInt(el.dataset.decimals || 0, 10);
-      const suffix = el.dataset.suffix || '';
-      const dur = 2000;
-      const start = performance.now();
-      (function tick(now) {
-        const p = Math.min((now - start) / dur, 1);
-        const val = target * easeOut(p);
-        el.textContent = val.toLocaleString('pt-BR', {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals,
-        }) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      })(start);
-    }
-  }, { threshold: 0.6 });
-  document.querySelectorAll('[data-count]').forEach((el) => io.observe(el));
-})();
-
-/* ─── Parallax de scroll + scroll horizontal + nav ─── */
-(() => {
-  // guarda o deslocamento aplicado para medir a posição "real" sem feedback
-  const parallaxEls = [...document.querySelectorAll('[data-parallax-depth]')]
-    .map((el) => ({ el, depth: parseFloat(el.dataset.parallaxDepth), offset: 0 }));
-  const journey = document.querySelector('.journey');
-  const track = document.getElementById('journeyTrack');
-  const nav = document.getElementById('nav');
-  const progress = document.getElementById('scrollProgress');
-  let lastY = 0, ticking = false;
-
-  function update() {
-    const y = window.scrollY;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-
-    progress.style.width = `${(y / max) * 100}%`;
-
-    nav.classList.toggle('is-scrolled', y > 60);
-    nav.classList.toggle('is-hidden', y > lastY && y > 400);
-    lastY = y;
-
-    if (!prefersReducedMotion) {
-      for (const s of parallaxEls) {
-        const rect = s.el.getBoundingClientRect();
-        const center = (rect.top - s.offset) + rect.height / 2 - window.innerHeight / 2;
-        s.offset = center * -s.depth;
-        s.el.style.transform = `translateY(${s.offset}px)`;
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        s.tw += s.speed;
+        const alpha = 0.35 + Math.abs(Math.sin(s.tw)) * 0.5;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(233, 237, 247, ${alpha})`;
+        ctx.fill();
       }
-
-      // scroll horizontal: converte progresso vertical da seção em translateX
-      const jr = journey.getBoundingClientRect();
-      const total = jr.height - window.innerHeight;
-      const p = Math.min(Math.max(-jr.top / total, 0), 1);
-      const distance = track.scrollWidth - window.innerWidth;
-      track.style.transform = `translateX(${-p * distance}px)`;
-    }
-
-    ticking = false;
+      requestAnimationFrame(draw);
+    };
+    draw();
   }
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }, { passive: true });
-  window.addEventListener('resize', update);
-  update();
-})();
+  /* ─── Reveal ao scroll ─── */
+  const revealEls = document.querySelectorAll(".reveal");
+  revealEls.forEach((el) => {
+    const delay = el.dataset.delay;
+    if (delay) el.style.setProperty("--reveal-delay", `${delay}ms`);
+  });
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      }
+    },
+    { threshold: 0.12 }
+  );
+  revealEls.forEach((el) => io.observe(el));
 
-/* ─── Cards 3D com tilt seguindo o mouse ─── */
-(() => {
-  if (prefersReducedMotion || window.matchMedia('(hover: none)').matches) return;
-  document.querySelectorAll('[data-tilt]').forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width;
-      const py = (e.clientY - r.top) / r.height;
-      card.style.setProperty('--mx', `${px * 100}%`);
-      card.style.setProperty('--my', `${py * 100}%`);
-      card.style.transform =
-        `rotateY(${(px - 0.5) * 16}deg) rotateX(${(0.5 - py) * 16}deg) translateZ(6px)`;
+  /* ─── Demo interativa: toque na lua troca o tom de luz ─── */
+  const MODES = {
+    cool: {
+      core: "#f3f8ff",
+      mid: "#ccdcf5",
+      edge: "#6d84a8",
+      glow: "rgba(170, 205, 255, 0.5)",
+    },
+    warm: {
+      core: "#fff3dd",
+      mid: "#ffd9a0",
+      edge: "#b98a45",
+      glow: "rgba(255, 200, 120, 0.55)",
+    },
+    amber: {
+      core: "#ffd873",
+      mid: "#ffb23e",
+      edge: "#9c5c14",
+      glow: "rgba(255, 160, 50, 0.6)",
+    },
+  };
+  const ORDER = ["cool", "warm", "amber"];
+  let currentMode = "warm";
+
+  const root = document.documentElement;
+  const moon = document.getElementById("moon");
+  const modeDots = document.querySelectorAll(".mode-dot");
+
+  const applyMode = (name) => {
+    const m = MODES[name];
+    if (!m) return;
+    currentMode = name;
+    root.style.setProperty("--moon-core", m.core);
+    root.style.setProperty("--moon-mid", m.mid);
+    root.style.setProperty("--moon-edge", m.edge);
+    root.style.setProperty("--moon-glow", m.glow);
+    modeDots.forEach((d) => d.classList.toggle("is-active", d.dataset.mode === name));
+  };
+
+  if (moon) {
+    moon.addEventListener("click", () => {
+      const next = ORDER[(ORDER.indexOf(currentMode) + 1) % ORDER.length];
+      applyMode(next);
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1.2)';
-      card.style.transform = '';
-      setTimeout(() => (card.style.transition = ''), 600);
-    });
+  }
+  modeDots.forEach((d) => d.addEventListener("click", () => applyMode(d.dataset.mode)));
+
+  /* ─── Névoa: partículas geradas ─── */
+  const mist = document.getElementById("mist");
+  if (mist && !reduceMotion) {
+    for (let i = 0; i < 9; i++) {
+      const p = document.createElement("i");
+      p.style.animationDelay = `${(i * 0.38).toFixed(2)}s`;
+      p.style.setProperty("--drift", `${(Math.random() * 44 - 22).toFixed(0)}px`);
+      mist.appendChild(p);
+    }
+  }
+
+  /* ─── Contagem regressiva (evergreen de 15 min, persiste por visita) ─── */
+  const TIMER_KEY = "lua-offer-deadline";
+  const DURATION = 15 * 60 * 1000;
+
+  let deadline = Number(sessionStorage.getItem(TIMER_KEY));
+  if (!deadline || deadline < Date.now()) {
+    deadline = Date.now() + DURATION;
+    sessionStorage.setItem(TIMER_KEY, String(deadline));
+  }
+
+  const timerTargets = [
+    document.getElementById("announceTimer"),
+    document.getElementById("offerTimer"),
+    document.getElementById("stickyTimer"),
+  ].filter(Boolean);
+
+  const tick = () => {
+    let ms = deadline - Date.now();
+    if (ms <= 0) {
+      // reinicia para manter a urgência sempre ativa
+      deadline = Date.now() + DURATION;
+      sessionStorage.setItem(TIMER_KEY, String(deadline));
+      ms = DURATION;
+    }
+    const min = String(Math.floor(ms / 60000)).padStart(2, "0");
+    const sec = String(Math.floor((ms % 60000) / 1000)).padStart(2, "0");
+    const label = `${min}:${sec}`;
+    timerTargets.forEach((el) => (el.textContent = label));
+  };
+  tick();
+  setInterval(tick, 1000);
+
+  /* ─── Estoque decrescente (persiste na sessão) ─── */
+  const STOCK_KEY = "lua-stock";
+  let stock = Number(sessionStorage.getItem(STOCK_KEY)) || 17;
+  const stockEls = [document.getElementById("stockCount"), ...document.querySelectorAll(".stock-mirror")].filter(Boolean);
+  const renderStock = () => stockEls.forEach((el) => (el.textContent = stock));
+  renderStock();
+
+  setInterval(() => {
+    if (stock > 6 && Math.random() < 0.35) {
+      stock -= 1;
+      sessionStorage.setItem(STOCK_KEY, String(stock));
+      renderStock();
+    }
+  }, 45000);
+
+  /* ─── Barra fixa de compra: aparece após o hero ─── */
+  const stickybar = document.getElementById("stickybar");
+  const hero = document.getElementById("hero");
+  const offer = document.getElementById("oferta");
+  if (stickybar && hero) {
+    const update = () => {
+      const pastHero = window.scrollY > hero.offsetHeight * 0.7;
+      let overOffer = false;
+      if (offer) {
+        const r = offer.getBoundingClientRect();
+        overOffer = r.top < window.innerHeight && r.bottom > 0;
+      }
+      stickybar.classList.toggle("is-visible", pastHero && !overOffer);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  }
+
+  /* ─── Checkout: troque os links abaixo pela URL do seu checkout ─── */
+  const CHECKOUT_URLS = {
+    kit1: "#oferta", // ex.: "https://seucheckout.com/lua-encantada-1un"
+    kit2: "#oferta", // ex.: "https://seucheckout.com/lua-encantada-kit2"
+  };
+  document.querySelectorAll("[data-checkout]").forEach((a) => {
+    const url = CHECKOUT_URLS[a.dataset.checkout];
+    if (url && url !== "#oferta") a.href = url;
+    else
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("Configure a URL do seu checkout em js/main.js (CHECKOUT_URLS). 🌙");
+      });
   });
 })();
