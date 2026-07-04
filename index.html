@@ -3,217 +3,355 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COSMOS — Uma Jornada pelo Universo</title>
-  <meta name="description" content="Uma experiência imersiva pelo universo, com animações de scroll e efeitos especiais." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%237c6cff'/%3E%3Cellipse cx='50' cy='50' rx='48' ry='14' fill='none' stroke='%234dd6ff' stroke-width='5' transform='rotate(-18 50 50)'/%3E%3C/svg%3E" />
+  <title>Lua Encantada™ — Umidificador Luminária Lua 3D | Durma melhor hoje</title>
+  <meta name="description" content="A luminária de lua 3D que umidifica o ar, difunde aromas e transforma seu quarto em um refúgio. 3 tons de luz por toque, silenciosa e com frete grátis para todo o Brasil." />
+  <meta property="og:title" content="Lua Encantada™ — Umidificador Luminária Lua 3D" />
+  <meta property="og:description" content="Umidificador + difusor de aromas + luminária em uma lua 3D realista. Durma melhor a partir desta noite." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23ffc24d'/%3E%3Ccircle cx='36' cy='38' r='8' fill='%23e8a53a'/%3E%3Ccircle cx='60' cy='62' r='11' fill='%23e8a53a'/%3E%3Ccircle cx='66' cy='30' r='5' fill='%23e8a53a'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ═══ Preloader ═══ -->
-  <div class="preloader" id="preloader">
-    <div class="preloader__orbit">
-      <div class="preloader__planet"></div>
-      <div class="preloader__moon"></div>
-    </div>
-    <p class="preloader__text">Iniciando jornada<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
-  </div>
+  <canvas id="starfield" aria-hidden="true"></canvas>
 
-  <!-- ═══ Efeitos globais ═══ -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <canvas id="starfield"></canvas>
+  <!-- ═══ Barra de anúncio ═══ -->
+  <div class="announce">
+    <p>🌙 OFERTA DE LANÇAMENTO: <strong>50% OFF + Frete Grátis</strong> — termina em <span id="announceTimer">14:59</span></p>
+  </div>
 
   <!-- ═══ Navegação ═══ -->
   <nav class="nav" id="nav">
-    <a href="#hero" class="nav__logo" data-magnetic>✦ COSMOS</a>
+    <a href="#hero" class="nav__logo">🌙 Lua Encantada<sup>™</sup></a>
     <ul class="nav__links">
-      <li><a href="#sobre" data-magnetic>Origem</a></li>
-      <li><a href="#planetas" data-magnetic>Planetas</a></li>
-      <li><a href="#jornada" data-magnetic>Jornada</a></li>
-      <li><a href="#contato" data-magnetic class="nav__cta">Embarcar</a></li>
+      <li><a href="#solucao">Funções</a></li>
+      <li><a href="#depoimentos">Avaliações</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
     </ul>
+    <a href="#oferta" class="btn btn--small">Comprar agora</a>
   </nav>
 
-  <!-- ═══ Hero ═══ -->
+  <!-- ═══ 1. Hero ═══ -->
   <header class="hero" id="hero">
-    <div class="hero__content" data-parallax-depth="0.3">
-      <p class="hero__eyebrow reveal">EXPERIÊNCIA IMERSIVA</p>
-      <h1 class="hero__title" id="heroTitle">COSMOS</h1>
-      <p class="hero__subtitle reveal" data-delay="600">
-        Role para atravessar <span class="glow-text">13,8 bilhões de anos</span> de história cósmica
-      </p>
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">⭐ 4,9/5 — mais de 3.200 clientes dormindo melhor</p>
+        <h1 class="hero__title reveal" data-delay="100">
+          Traga a lua para o seu quarto.<br />
+          <em>E leve o ar seco embora.</em>
+        </h1>
+        <p class="hero__sub reveal" data-delay="200">
+          A <strong>Lua Encantada™</strong> é luminária de lua 3D, umidificador ultrassônico
+          e difusor de aromas — tudo em um só. Névoa fria e silenciosa, luz âmbar
+          relaxante e aquele clima de noite estrelada, todas as noites.
+        </p>
+        <ul class="hero__bullets reveal" data-delay="300">
+          <li>💧 Umidifica o ar do quarto (adeus, garganta seca)</li>
+          <li>🌿 Aceita óleos essenciais para aromaterapia</li>
+          <li>✋ 3 tons de luz que trocam com um toque</li>
+          <li>🤫 100% silenciosa — não atrapalha o sono</li>
+        </ul>
+        <div class="hero__cta reveal" data-delay="400">
+          <a href="#oferta" class="btn btn--primary btn--big">QUERO MINHA LUA — 50% OFF</a>
+          <p class="hero__guarantee">✅ Garantia de 7 dias &nbsp;•&nbsp; 🚚 Frete grátis Brasil</p>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" data-delay="200">
+        <div class="moon-scene" id="moonScene">
+          <div class="mist" id="mist" aria-hidden="true"></div>
+          <button class="moon" id="moon" aria-label="Toque para trocar o tom de luz da lua">
+            <span class="moon__texture" aria-hidden="true"></span>
+          </button>
+          <div class="moon-stand" aria-hidden="true">
+            <span></span><span></span>
+          </div>
+          <div class="moon-glow" aria-hidden="true"></div>
+        </div>
+        <p class="moon-hint">👆 <strong>Toque na lua</strong> e troque o tom de luz — igual ao produto real</p>
+        <div class="moon-modes" id="moonModes">
+          <button class="mode-dot mode-dot--cool" data-mode="cool" aria-label="Luz branca fria"></button>
+          <button class="mode-dot mode-dot--warm is-active" data-mode="warm" aria-label="Luz branca quente"></button>
+          <button class="mode-dot mode-dot--amber" data-mode="amber" aria-label="Luz âmbar"></button>
+        </div>
+      </div>
     </div>
-    <div class="hero__scroll-hint">
-      <div class="mouse"><div class="mouse__wheel"></div></div>
-      <span>Role para explorar</span>
-    </div>
-    <div class="hero__gradient"></div>
+    <div class="hero__fade" aria-hidden="true"></div>
   </header>
 
+  <!-- ═══ Barra de confiança ═══ -->
+  <section class="trustbar">
+    <div class="container trustbar__grid">
+      <span>🚚 Frete grátis para todo o Brasil</span>
+      <span>🔒 Pagamento 100% seguro</span>
+      <span>↩️ 7 dias para devolver</span>
+      <span>💬 Suporte em português</span>
+    </div>
+  </section>
+
   <main>
-    <!-- ═══ Origem / texto reveal ═══ -->
-    <section class="section origin" id="sobre">
+    <!-- ═══ 2. Problema ═══ -->
+    <section class="section problem" id="problema">
+      <div class="container container--narrow">
+        <p class="eyebrow reveal">VOCÊ CONHECE ESSA SENSAÇÃO…</p>
+        <h2 class="section__title reveal">Acordar com a garganta seca<br />não é normal.</h2>
+        <div class="problem__grid">
+          <div class="card reveal" data-delay="0">
+            <span class="card__icon">🥵</span>
+            <h3>Ar-condicionado resseca tudo</h3>
+            <p>Pele repuxando, nariz entupido e garganta arranhando toda manhã. O ar seco do quarto rouba a qualidade do seu sono sem você perceber.</p>
+          </div>
+          <div class="card reveal" data-delay="120">
+            <span class="card__icon">💡</span>
+            <h3>Luz branca antes de dormir</h3>
+            <p>A luz fria do teto e das telas avisa ao seu cérebro que ainda é dia. Resultado: você demora a pegar no sono e acorda cansado.</p>
+          </div>
+          <div class="card reveal" data-delay="240">
+            <span class="card__icon">🏚️</span>
+            <h3>Quarto sem aconchego</h3>
+            <p>Umidificadores comuns parecem equipamento de hospital. Funcionam, mas deixam o quarto com cara de consultório — não de refúgio.</p>
+          </div>
+        </div>
+        <p class="problem__bridge reveal">E se <strong>uma única peça</strong> resolvesse as três coisas — e ainda fosse a decoração mais elogiada da casa?</p>
+      </div>
+    </section>
+
+    <!-- ═══ 3. Solução ═══ -->
+    <section class="section solution" id="solucao">
       <div class="container">
-        <h2 class="split-lines big-statement">
-          <span class="line">No início, havia apenas</span>
-          <span class="line"><em class="glow-text">um ponto infinito</em> de energia.</span>
-          <span class="line">Então, tudo explodiu em existência.</span>
-        </h2>
-        <div class="origin__grid">
-          <div class="origin__card reveal" data-delay="0">
-            <span class="origin__num">01</span>
-            <h3>Big Bang</h3>
-            <p>Em uma fração de segundo, o universo se expandiu de algo menor que um átomo para algo maior que uma galáxia.</p>
-          </div>
-          <div class="origin__card reveal" data-delay="150">
-            <span class="origin__num">02</span>
-            <h3>Primeiras Estrelas</h3>
-            <p>Gigantes azuis nasceram das nuvens primordiais de hidrogênio, forjando os primeiros elementos pesados.</p>
-          </div>
-          <div class="origin__card reveal" data-delay="300">
-            <span class="origin__num">03</span>
-            <h3>Galáxias</h3>
-            <p>A gravidade teceu bilhões de estrelas em espirais majestosas que dançam pelo vazio há eras.</p>
-          </div>
+        <p class="eyebrow reveal">A SOLUÇÃO</p>
+        <h2 class="section__title reveal">3 funções. 1 lua. <em>Zero comparação.</em></h2>
+        <div class="solution__grid">
+          <article class="solution__card reveal" data-delay="0">
+            <div class="solution__num">01</div>
+            <h3>💧 Umidificador ultrassônico</h3>
+            <p>Névoa fria, fina e contínua saindo do topo da lua. Devolve a umidade que o ar-condicionado rouba e alivia pele, nariz e garganta — <strong>sem fazer nenhum barulho</strong>.</p>
+          </article>
+          <article class="solution__card reveal" data-delay="120">
+            <div class="solution__num">02</div>
+            <h3>🌿 Difusor de aromas</h3>
+            <p>Pingue algumas gotas de óleo essencial na água e transforme o quarto em spa. Lavanda para dormir, eucalipto para respirar, capim-limão para relaxar.</p>
+          </article>
+          <article class="solution__card reveal" data-delay="240">
+            <div class="solution__num">03</div>
+            <h3>🌙 Luminária de lua 3D</h3>
+            <p>Impressa em 3D com as crateras reais da lua. Um toque troca entre <strong>branco frio, branco quente e âmbar dourado</strong> — a luz perfeita para cada momento.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══ Contadores ═══ -->
-    <section class="section stats">
-      <div class="stats__glow" data-parallax-depth="0.15"></div>
-      <div class="container stats__grid">
-        <div class="stat reveal">
-          <span class="stat__value" data-count="13.8" data-decimals="1">0</span>
-          <span class="stat__unit">bilhões de anos</span>
-          <span class="stat__label">Idade do universo</span>
-        </div>
-        <div class="stat reveal" data-delay="150">
-          <span class="stat__value" data-count="200" data-suffix="+">0</span>
-          <span class="stat__unit">bilhões</span>
-          <span class="stat__label">Galáxias observáveis</span>
-        </div>
-        <div class="stat reveal" data-delay="300">
-          <span class="stat__value" data-count="299792">0</span>
-          <span class="stat__unit">km/s</span>
-          <span class="stat__label">Velocidade da luz</span>
-        </div>
-        <div class="stat reveal" data-delay="450">
-          <span class="stat__value" data-count="93" data-suffix=" bi">0</span>
-          <span class="stat__unit">anos-luz</span>
-          <span class="stat__label">Diâmetro observável</span>
-        </div>
+    <!-- ═══ 4. Como funciona ═══ -->
+    <section class="section how" id="como-funciona">
+      <div class="container container--narrow">
+        <p class="eyebrow reveal">SIMPLES ASSIM</p>
+        <h2 class="section__title reveal">Pronta em 30 segundos</h2>
+        <ol class="how__steps">
+          <li class="how__step reveal" data-delay="0">
+            <span class="how__badge">1</span>
+            <h3>Encha com água</h3>
+            <p>Abra o topo, coloque água (e óleo essencial, se quiser). Um reservatório dura horas de névoa.</p>
+          </li>
+          <li class="how__step reveal" data-delay="150">
+            <span class="how__badge">2</span>
+            <h3>Toque na lua</h3>
+            <p>Um toque liga e troca o tom de luz. Escolha o âmbar dourado para o modo "noite perfeita".</p>
+          </li>
+          <li class="how__step reveal" data-delay="300">
+            <span class="how__badge">3</span>
+            <h3>Relaxe e durma</h3>
+            <p>Névoa suave, aroma no ar e luz de lua cheia. Seu quarto virou o lugar favorito da casa.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <!-- ═══ Planetas / cards 3D ═══ -->
-    <section class="section planets" id="planetas">
+    <!-- ═══ 5. Benefícios ═══ -->
+    <section class="section benefits" id="beneficios">
       <div class="container">
-        <p class="section__eyebrow reveal">SISTEMA SOLAR</p>
-        <h2 class="section__title split-chars" id="planetsTitle">Vizinhos Cósmicos</h2>
-        <div class="planets__grid">
-          <article class="planet-card reveal" data-tilt data-delay="0">
-            <div class="planet-card__sphere planet-card__sphere--mercury"></div>
-            <h3>Mercúrio</h3>
-            <p>O mensageiro veloz. Um ano aqui dura apenas 88 dias terrestres.</p>
-            <span class="planet-card__tag">57,9 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="120">
-            <div class="planet-card__sphere planet-card__sphere--venus"></div>
-            <h3>Vênus</h3>
-            <p>A estrela da manhã. Sua atmosfera densa esconde um mundo de 465&nbsp;°C.</p>
-            <span class="planet-card__tag">108,2 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="240">
-            <div class="planet-card__sphere planet-card__sphere--earth"></div>
-            <h3>Terra</h3>
-            <p>O ponto azul-claro. O único lugar conhecido onde a vida floresce.</p>
-            <span class="planet-card__tag">149,6 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="360">
-            <div class="planet-card__sphere planet-card__sphere--mars"></div>
-            <h3>Marte</h3>
-            <p>O planeta vermelho. Nosso próximo destino na exploração espacial.</p>
-            <span class="planet-card__tag">227,9 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="480">
-            <div class="planet-card__sphere planet-card__sphere--jupiter"></div>
-            <h3>Júpiter</h3>
-            <p>O gigante guardião. Sua gravidade protege os planetas internos.</p>
-            <span class="planet-card__tag">778,5 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="600">
-            <div class="planet-card__sphere planet-card__sphere--saturn"><span class="ring"></span></div>
-            <h3>Saturno</h3>
-            <p>O senhor dos anéis. Bilhões de fragmentos de gelo em órbita perfeita.</p>
-            <span class="planet-card__tag">1,43 bi km do Sol</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Scroll horizontal / jornada ═══ -->
-    <section class="journey" id="jornada">
-      <div class="journey__sticky">
-        <div class="journey__track" id="journeyTrack">
-          <div class="journey__panel">
-            <span class="journey__year">Ano 0</span>
-            <h3>O Grande Início</h3>
-            <p>Toda a matéria, energia, espaço e tempo emergem de uma singularidade.</p>
+        <p class="eyebrow reveal">POR QUE VOCÊ VAI AMAR</p>
+        <h2 class="section__title reveal">Feita para noites melhores</h2>
+        <div class="benefits__grid">
+          <div class="benefit reveal" data-delay="0">
+            <span class="benefit__icon">😴</span>
+            <h3>Sono mais profundo</h3>
+            <p>Luz âmbar relaxante + ar umidificado = a combinação que seu corpo pede para desligar.</p>
           </div>
-          <div class="journey__panel">
-            <span class="journey__year">+380 mil anos</span>
-            <h3>A Primeira Luz</h3>
-            <p>O universo esfria o suficiente para a luz viajar livremente — a radiação cósmica de fundo.</p>
+          <div class="benefit reveal" data-delay="80">
+            <span class="benefit__icon">🫧</span>
+            <h3>Alívio do ar seco</h3>
+            <p>Ideal para quarto com ar-condicionado. Chega de acordar com nariz e garganta ressecados.</p>
           </div>
-          <div class="journey__panel">
-            <span class="journey__year">+200 mi anos</span>
-            <h3>Amanhecer Estelar</h3>
-            <p>As primeiras estrelas acendem, encerrando a era das trevas cósmicas.</p>
+          <div class="benefit reveal" data-delay="160">
+            <span class="benefit__icon">🤫</span>
+            <h3>Silêncio absoluto</h3>
+            <p>Tecnologia ultrassônica: você vê a névoa, mas não ouve nada. Nem o sono mais leve percebe.</p>
           </div>
-          <div class="journey__panel">
-            <span class="journey__year">+9,2 bi anos</span>
-            <h3>Nasce o Sol</h3>
-            <p>Nossa estrela se forma de uma nuvem de gás e poeira de gerações estelares anteriores.</p>
+          <div class="benefit reveal" data-delay="240">
+            <span class="benefit__icon">🪵</span>
+            <h3>Decoração premium</h3>
+            <p>Globo texturizado 3D + base de madeira clara em design minimalista. Fica linda até desligada.</p>
           </div>
-          <div class="journey__panel">
-            <span class="journey__year">Hoje</span>
-            <h3>Você está aqui</h3>
-            <p>Átomos forjados em estrelas, contemplando as próprias origens. Nós somos o universo se conhecendo.</p>
+          <div class="benefit reveal" data-delay="320">
+            <span class="benefit__icon">🎁</span>
+            <h3>O presente perfeito</h3>
+            <p>Aniversário, namorada(o), dia das mães… quem recebe uma lua nunca esquece quem deu.</p>
+          </div>
+          <div class="benefit reveal" data-delay="400">
+            <span class="benefit__icon">⚡</span>
+            <h3>Gasta quase nada</h3>
+            <p>LED + USB de baixo consumo: menos energia que um carregador de celular.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ Parallax final / CTA ═══ -->
-    <section class="finale" id="contato">
-      <div class="finale__planet" data-parallax-depth="0.25"></div>
-      <div class="finale__content">
-        <h2 class="split-lines big-statement">
-          <span class="line">Somos poeira de estrelas</span>
-          <span class="line">olhando para <em class="glow-text">casa</em>.</span>
-        </h2>
-        <a href="#hero" class="btn-launch reveal" data-magnetic id="btnTop">
-          <span>Recomeçar a jornada</span> 🚀
-        </a>
+    <!-- ═══ 6. Prova social ═══ -->
+    <section class="section reviews" id="depoimentos">
+      <div class="container">
+        <p class="eyebrow reveal">QUEM JÁ TEM, RECOMENDA</p>
+        <h2 class="section__title reveal">⭐ 4,9/5 de mais de 3.200 avaliações</h2>
+        <div class="reviews__grid">
+          <figure class="review reveal" data-delay="0">
+            <div class="review__stars">★★★★★</div>
+            <blockquote>“Comprei pro meu quarto com ar-condicionado e mudou tudo. Parei de acordar com a garganta seca e a luz âmbar é MUITO gostosa pra dormir. Parece coisa de filme.”</blockquote>
+            <figcaption><span class="review__avatar">M</span> Mariana S. — São Paulo, SP <span class="review__badge">✔ Compra verificada</span></figcaption>
+          </figure>
+          <figure class="review reveal" data-delay="120">
+            <div class="review__stars">★★★★★</div>
+            <blockquote>“Dei de presente pra minha namorada e ganhei o mês. Ela usa com óleo de lavanda toda noite. A textura da lua é impressionante, as crateras parecem de verdade.”</blockquote>
+            <figcaption><span class="review__avatar">L</span> Lucas P. — Belo Horizonte, MG <span class="review__badge">✔ Compra verificada</span></figcaption>
+          </figure>
+          <figure class="review reveal" data-delay="240">
+            <div class="review__stars">★★★★★</div>
+            <blockquote>“Achei que fosse só bonita, mas o umidificador funciona de verdade e é silencioso mesmo. Meu bebê dorme no quarto e não faz um pio de barulho. Recomendo demais.”</blockquote>
+            <figcaption><span class="review__avatar">C</span> Camila R. — Curitiba, PR <span class="review__badge">✔ Compra verificada</span></figcaption>
+          </figure>
+        </div>
+        <div class="reviews__strip reveal">
+          <span>😴 <strong>93%</strong> relatam dormir melhor na 1ª semana</span>
+          <span>🎁 <strong>4 em cada 10</strong> compram uma segunda para presentear</span>
+          <span>🔁 <strong>&lt; 1%</strong> de devoluções</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 7. Oferta + garantia ═══ -->
+    <section class="section offer" id="oferta">
+      <div class="offer__glow" aria-hidden="true"></div>
+      <div class="container container--narrow">
+        <p class="eyebrow reveal">OFERTA DE LANÇAMENTO</p>
+        <h2 class="section__title reveal">Sua lua está esperando 🌙</h2>
+        <p class="offer__timer reveal">A oferta expira em <strong id="offerTimer">14:59</strong> — depois volta ao preço normal.</p>
+
+        <div class="offer__grid">
+          <article class="price-card reveal" data-delay="0">
+            <h3>1 Lua Encantada™</h3>
+            <p class="price-card__old">De <s>R$ 259,90</s></p>
+            <p class="price-card__price">R$ 129<sup>,90</sup></p>
+            <p class="price-card__installments">ou 12x de R$ 12,94</p>
+            <ul>
+              <li>✅ Luminária + umidificador + difusor</li>
+              <li>✅ Base de madeira inclusa</li>
+              <li>✅ Cabo USB incluso</li>
+              <li>✅ Frete grátis</li>
+            </ul>
+            <a class="btn btn--primary" href="#" data-checkout="kit1">COMPRAR 1 UNIDADE</a>
+          </article>
+
+          <article class="price-card price-card--featured reveal" data-delay="120">
+            <span class="price-card__flag">MAIS VENDIDO 🔥</span>
+            <h3>Kit Casal — 2 Luas</h3>
+            <p class="price-card__old">De <s>R$ 519,80</s></p>
+            <p class="price-card__price">R$ 219<sup>,90</sup></p>
+            <p class="price-card__installments">ou 12x de R$ 21,90 — sai R$ 109,95 cada</p>
+            <ul>
+              <li>✅ Tudo do kit de 1 unidade</li>
+              <li>✅ <strong>Economia extra de R$ 39,90</strong></li>
+              <li>✅ Perfeito para presentear</li>
+              <li>✅ Frete grátis prioritário</li>
+            </ul>
+            <a class="btn btn--primary" href="#" data-checkout="kit2">QUERO O KIT CASAL</a>
+          </article>
+        </div>
+
+        <div class="guarantee reveal">
+          <span class="guarantee__seal">7<br /><small>DIAS</small></span>
+          <div>
+            <h3>Garantia "Noite Perfeita" de 7 dias</h3>
+            <p>Use a sua Lua Encantada™ por 7 noites. Se o seu quarto não virar o seu lugar favorito, devolvemos <strong>100% do seu dinheiro</strong>. Sem perguntas, sem burocracia.</p>
+          </div>
+        </div>
+
+        <p class="offer__stock reveal">⚠️ Restam <strong id="stockCount">17</strong> unidades no estoque desta promoção</p>
+      </div>
+    </section>
+
+    <!-- ═══ 8. FAQ ═══ -->
+    <section class="section faq" id="faq">
+      <div class="container container--narrow">
+        <p class="eyebrow reveal">DÚVIDAS FREQUENTES</p>
+        <h2 class="section__title reveal">Tudo o que você quer saber</h2>
+        <div class="faq__list">
+          <details class="faq__item reveal">
+            <summary>Quanto tempo dura a água no reservatório?</summary>
+            <p>Com o reservatório cheio, a névoa dura de 4 a 6 horas contínuas — o suficiente para você pegar no sono com o quarto no clima perfeito. Muitos clientes ligam ao deitar e ela desliga sozinha quando a água acaba, com total segurança.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>É silenciosa mesmo? Posso usar no quarto do bebê?</summary>
+            <p>Sim. A tecnologia ultrassônica vibra em frequência inaudível: você vê a névoa saindo, mas não ouve nada. É uma das escolhas favoritas para quartos de bebê justamente pela luz suave + silêncio.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Consome muita energia?</summary>
+            <p>Não. Ela funciona via USB com LED de baixíssimo consumo — gasta menos que um carregador de celular. Pode deixar ligada todas as noites sem medo da conta de luz.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Posso usar qualquer óleo essencial?</summary>
+            <p>Sim, basta pingar 2 a 3 gotas do seu óleo essencial favorito na água. Lavanda e camomila são os preferidos para a hora de dormir.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>Qual o prazo de entrega? O frete é grátis mesmo?</summary>
+            <p>O frete é grátis para todo o Brasil. O envio é feito em até 24h úteis após a confirmação e a entrega leva em média de 7 a 15 dias úteis, com código de rastreio enviado por e-mail.</p>
+          </details>
+          <details class="faq__item reveal">
+            <summary>E se eu não gostar?</summary>
+            <p>Você tem 7 dias de garantia incondicional. Não amou? Devolvemos 100% do valor, sem perguntas. O risco é todo nosso.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 9. CTA final ═══ -->
+    <section class="section finale">
+      <div class="container container--narrow finale__content">
+        <div class="finale__moon" aria-hidden="true"></div>
+        <h2 class="reveal">Esta noite, você pode dormir<br /><em>debaixo da sua própria lua.</em></h2>
+        <p class="reveal">50% OFF + frete grátis + garantia de 7 noites. A única coisa que você tem a perder é o ar seco.</p>
+        <a href="#oferta" class="btn btn--primary btn--big reveal">GARANTIR MINHA LUA COM 50% OFF</a>
+        <p class="finale__note reveal">🔥 Oferta por tempo limitado — restam <strong class="stock-mirror">17</strong> unidades</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="footer__marquee" aria-hidden="true">
-      <div class="footer__marquee-track">
-        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
-        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
-      </div>
+    <div class="container footer__grid">
+      <p>🌙 <strong>Lua Encantada™</strong> — noites melhores, entregues na sua porta.</p>
+      <p>Pagamento seguro: Pix • Cartão em até 12x • Boleto</p>
+      <p class="footer__legal">© 2026 Lua Encantada. Todos os direitos reservados.</p>
     </div>
-    <p>COSMOS — feito com vanilla HTML, CSS e JS. Sem bibliotecas, só física e imaginação.</p>
   </footer>
+
+  <!-- ═══ Barra fixa de compra (mobile) ═══ -->
+  <div class="stickybar" id="stickybar">
+    <div class="stickybar__info">
+      <span class="stickybar__price">R$ 129,90 <s>R$ 259,90</s></span>
+      <span class="stickybar__timer">⏳ <span id="stickyTimer">14:59</span></span>
+    </div>
+    <a href="#oferta" class="btn btn--primary btn--small">Comprar 🌙</a>
+  </div>
 
   <script src="js/main.js"></script>
 </body>
