@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-dark text-white overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-gold to-yellow-600 text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-gold/40 transition-all;
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-gold/20 rounded-2xl p-6;
+  }
+}
