@@ -1,63 +1,53 @@
-# 🌙 LUNARIS — Loja Dropshipping (Luminária Lua 3D com Umidificador 880ML)
+# 🌙 LUNARIS — Landing Page (Luminária Lua 3D com Umidificador 880ML)
 
-Landing page de alta conversão para loja de dropshipping, em português (pt-BR),
-construída com HTML, CSS e JavaScript puros — sem dependências, pronta para
-hospedar em qualquer lugar (GitHub Pages, Vercel, Netlify, Hostinger...).
+Landing page de alta conversão em pt-BR construída com **React + Vite + Tailwind CSS +
+Framer Motion + Spline 3D**, para venda direta (dropshipping).
 
 **Produto:** Luminária Lua 3D com Umidificador de Ar 880ML — LED USB Recarregável e Difusor de Aromas
-**Preço:** US$ 59,99 (âncora US$ 119,99 — 50% OFF) · 12x de US$ 5,83 via Stripe
-**Variações:** À Bateria / USB · **Estoque:** 20 unidades
+**Preço:** R$ 89,90 (âncora R$ 179,90 — 50% OFF) · frete grátis para todo o Brasil
 
-## ✨ Elementos de conversão incluídos
+## ✨ Destaques
 
-- **Fotos profissionais do produto** — galeria com 4 imagens + thumbnails clicáveis
-- **Barra de anúncio animada** — frete grátis mundial, 50% OFF e garantia em loop
-- **Hero com preço âncora** — de US$ 119,99 por US$ 59,99 + 12x de US$ 5,83
-- **Seletor de variação** — À Bateria / USB (valor vai junto pro checkout)
-- **Contagem regressiva persistente** — cria urgência real (guarda o prazo na sessão)
-- **Estoque decrescente com barra visual** — lote de 20 unidades que diminui ao vivo
-- **Especificações completas + o que vem na caixa** — direto dos dados do fornecedor
-- **Prova social** — 6 avaliações com "compra verificada" + contadores animados
-- **Tabela comparativa** — LUNARIS vs. umidificadores comuns
-- **Seção de casos de uso** — sono, casal, saúde e presente
-- **Selo de garantia de 7 dias** — reduz objeção de risco
-- **FAQ em acordeão** — as 8 perguntas oficiais do produto
-- **Popup de vendas recentes** — "Fulana de Campinas acabou de comprar..."
-- **Botão de compra fixo no mobile** — CTA sempre visível
-- **100% responsivo** — otimizado para tráfego de anúncio (mobile-first)
+- **Hero 3D com Spline** — cena interativa + Spotlight animado + céu estrelado
+  (com fallback automático para foto real do produto se o 3D falhar)
+- **Lua interativa** — tilt 3D que segue o mouse, névoa animada que intensifica no
+  hover e clique que alterna os 3 tons de LED (branco frio / quente / âmbar),
+  simulando o controle touch do produto real
+- **Framer Motion em tudo** — parallax ao scroll, zoom no hover, fade-in ao entrar
+  na tela, contadores animados, stagger, marquee, acordeão com AnimatePresence
+- **Elementos de conversão** — preço âncora, prova social com compra verificada,
+  ficha técnica completa, seção presente + unboxing, aromaterapia em 3 passos,
+  FAQ oficial, garantia de 7 dias, CTA fixo no mobile
+- **100% responsivo** — mobile-first, pronto para tráfego de anúncio
 
-## 🚀 Como ver
-
-Abra o `index.html` no navegador, ou sirva localmente:
+## 🚀 Como rodar
 
 ```bash
-python3 -m http.server 8000
+npm install
+npm run dev       # desenvolvimento em http://localhost:5173
+npm run build     # build de produção em dist/
+npm run preview   # serve o build localmente
 ```
 
 ## 🔌 Conectando seu checkout
 
-Os botões de compra estão com um placeholder. Para vender de verdade, edite
-`js/main.js` (seção *"Botões de compra"*) e troque o `alert(...)` por um
-redirecionamento para o link do seu checkout Stripe:
-
-```js
-window.location.href = 'https://buy.stripe.com/SEU_LINK?variant=' + encodeURIComponent(selectedVariant);
-```
-
-A variável `selectedVariant` já carrega a versão escolhida (À Bateria / USB).
-Funciona com Stripe, Shopify, Yampi, CartPanda, Kiwify, ou qualquer gateway.
+Edite `src/lib/constants.ts` e troque `CHECKOUT_URL` pelo link do seu checkout
+(Stripe, Shopify, Yampi, CartPanda, Kiwify...). Todos os botões de compra usam
+essa constante.
 
 ## 📁 Estrutura
 
 ```
-index.html      → página completa da loja
-css/style.css   → estilos e animações
-js/main.js      → galeria, variantes, countdown, popups, estoque
-img/            → fotos do produto (produto-1.jpg a produto-4.jpg)
+index.html                     → entrada do Vite (fontes + meta tags)
+public/images/                 → fotos do produto
+src/App.tsx                    → composição das seções
+src/lib/constants.ts           → preço e link de checkout
+src/components/ui/             → Spline, Spotlight, Card, Reveal, ParallaxImage, Stars
+src/components/sections/       → hero, lua interativa, benefícios, specs, oferta, FAQ...
 ```
 
 ## 🎨 Personalizando
 
-- **Cores:** edite as variáveis em `:root` no topo do `css/style.css`
-- **Preços e textos:** tudo direto no `index.html`
-- **Nomes do popup de vendas:** lista `buyers` no `js/main.js`
+- **Cores:** paleta `night` e `moon` em `tailwind.config.js`
+- **Preços e textos:** `src/lib/constants.ts` e os componentes em `src/components/sections/`
+- **Cena 3D:** URL do Spline em `src/components/sections/hero.tsx`
