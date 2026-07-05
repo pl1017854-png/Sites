@@ -3,445 +3,1043 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LUNARIS — Luminária Lua 3D com Umidificador 880ML | Luz, Névoa e Aromaterapia</title>
-  <meta name="description" content="Luminária Lua 3D com Umidificador de Ar 880ML — LED USB recarregável e difusor de aromas. 3 em 1: ilumina, umidifica e aromatiza. Frete grátis mundial + 7 dias de garantia." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23f5d9a8'/%3E%3Ccircle cx='38' cy='40' r='8' fill='%23e0bd85'/%3E%3Ccircle cx='60' cy='62' r='6' fill='%23e0bd85'/%3E%3Ccircle cx='64' cy='34' r='4' fill='%23e0bd85'/%3E%3C/svg%3E" />
+  <title>Luminária Lua 3D com Umidificador 880ML — Tenha um Pedaço da Lua no Seu Quarto 🌙</title>
+  <meta name="description" content="Luminária Lua 3D + Umidificador de Ar 880ML + Difusor de Aromas em um só produto. De R$ 249,90 por R$ 129,90 (48% OFF). Frete grátis para todo o Brasil. Estoque limitado!" />
+  <meta property="og:title" content="Luminária Lua 3D com Umidificador 880ML — 48% OFF" />
+  <meta property="og:description" content="Luminária + Umidificador + Difusor de Aromas em um só produto. Frete grátis para todo o Brasil." />
+  <meta property="og:image" content="img/produto-1.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%23D4AF37'/%3E%3Ccircle cx='36' cy='40' r='9' fill='%23b8952c'/%3E%3Ccircle cx='62' cy='60' r='7' fill='%23b8952c'/%3E%3Ccircle cx='64' cy='34' r='5' fill='%23b8952c'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       DESIGN SYSTEM — LUNARIS
+       Fundo: #1a1a1a | Dourado: #D4AF37 | Texto: #fff
+    ═══════════════════════════════════════════ */
+    :root {
+      --bg: #1a1a1a;
+      --bg-soft: #222220;
+      --bg-card: #242422;
+      --gold: #D4AF37;
+      --gold-soft: #e8cc6a;
+      --gold-dim: rgba(212, 175, 55, 0.14);
+      --white: #ffffff;
+      --muted: #b9b5aa;
+      --red: #e5484d;
+      --border: rgba(212, 175, 55, 0.18);
+      --radius: 18px;
+      --font-title: 'Sora', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow-gold: 0 10px 40px rgba(212, 175, 55, 0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .container { width: min(1120px, 92%); margin-inline: auto; }
+
+    h1, h2, h3 { font-family: var(--font-title); font-weight: 800; line-height: 1.15; }
+
+    .section { padding: 4.5rem 0; }
+    .section-title { font-size: clamp(1.7rem, 4.5vw, 2.6rem); text-align: center; margin-bottom: 0.75rem; }
+    .section-sub { text-align: center; color: var(--muted); max-width: 560px; margin: 0 auto 3rem; }
+    .gold { color: var(--gold); }
+
+    /* ══ 7. Indicador de progresso do scroll ══ */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; z-index: 1000;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+      transform-origin: left center;
+      transform: scaleX(0);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+    }
+
+    /* ══ Barra de urgência ══ */
+    .urgency-bar {
+      background: linear-gradient(90deg, #8f1d21, var(--red), #8f1d21);
+      text-align: center; padding: 0.55rem 1rem;
+      font-size: 0.83rem; font-weight: 600; letter-spacing: 0.02em;
+    }
+    .urgency-bar strong { font-variant-numeric: tabular-nums; }
+
+    /* ══ Navegação ══ */
+    .nav {
+      position: sticky; top: 0; z-index: 900;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 4%;
+      background: rgba(26, 26, 26, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav__logo { font-family: var(--font-title); font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--gold); letter-spacing: 0.05em; }
+    .nav__links { display: none; list-style: none; gap: 1.8rem; }
+    .nav__links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; transition: color 0.25s; }
+    .nav__links a:hover { color: var(--gold); }
+    @media (min-width: 768px) { .nav__links { display: flex; } }
+
+    /* ══ Botões ══ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--gold), #b8912c);
+      color: #17130a; text-decoration: none;
+      font-family: var(--font-title); font-weight: 700;
+      padding: 1.05rem 2.2rem; border-radius: 999px;
+      font-size: 1.02rem; border: none; cursor: pointer;
+      box-shadow: var(--shadow-gold);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-align: center;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 16px 50px rgba(212, 175, 55, 0.4); }
+    .btn:active { transform: translateY(-1px); }
+    .btn--small { padding: 0.6rem 1.3rem; font-size: 0.85rem; }
+    .btn--ghost { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); box-shadow: none; }
+    .btn--full { width: 100%; }
+    .btn--pulse { animation: pulse-glow 2.2s ease-in-out infinite; }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 10px 40px rgba(212, 175, 55, 0.25); }
+      50% { box-shadow: 0 10px 55px rgba(212, 175, 55, 0.55); }
+    }
+
+    /* ══ 1. Hero ══ */
+    .hero {
+      position: relative; overflow: hidden;
+      padding: 4rem 0 5rem;
+      min-height: 88vh;
+      display: flex; align-items: center;
+    }
+    /* 6. Camadas de parallax */
+    .parallax-stars, .parallax-glow {
+      position: absolute; inset: -20% 0; pointer-events: none; z-index: 0;
+    }
+    .parallax-glow {
+      background: radial-gradient(ellipse 55% 42% at 72% 38%, rgba(212, 175, 55, 0.13), transparent 70%);
+    }
+    .hero__grid {
+      position: relative; z-index: 2;
+      display: grid; gap: 2.5rem; align-items: center;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) { .hero__grid { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; } }
+
+    .hero__eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      color: var(--gold-soft); border-radius: 999px;
+      padding: 0.42rem 1.1rem; font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 1.3rem;
+    }
+    .hero__title { font-size: clamp(2.1rem, 6vw, 3.4rem); margin-bottom: 1.1rem; }
+    .hero__title em { font-style: normal; color: var(--gold); }
+    .hero__sub { color: var(--muted); font-size: clamp(1rem, 2.4vw, 1.18rem); margin-bottom: 1.6rem; max-width: 34rem; }
+
+    .hero__price { display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.5rem; }
+    .price-old { color: var(--muted); text-decoration: line-through; font-size: 1.1rem; }
+    .price-new { font-family: var(--font-title); font-weight: 800; font-size: clamp(1.9rem, 5vw, 2.5rem); color: var(--gold); }
+    .badge-off {
+      background: var(--red); color: #fff; font-weight: 700; font-size: 0.8rem;
+      padding: 0.3rem 0.7rem; border-radius: 8px; letter-spacing: 0.03em;
+    }
+    .hero__installments { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
+    .hero__cta-group { display: flex; flex-direction: column; gap: 0.9rem; align-items: flex-start; }
+    .hero__stock {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: #ff8f92; font-size: 0.88rem; font-weight: 600;
+    }
+    .hero__stock .dot {
+      width: 9px; height: 9px; border-radius: 50%; background: var(--red);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 50% { opacity: 0.3; } }
+
+    .hero__media { position: relative; }
+    .hero__media img {
+      border-radius: 26px; width: 100%;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(212, 175, 55, 0.12);
+    }
+    .hero__float {
+      position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
+      background: rgba(34, 34, 32, 0.92); border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      border-radius: 14px; padding: 0.7rem 1.3rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+    }
+
+    /* ══ Selos de confiança ══ */
+    .trust {
+      border-block: 1px solid var(--border);
+      background: var(--bg-soft);
+      padding: 1.4rem 0;
+    }
+    .trust__grid {
+      display: grid; grid-template-columns: 1fr; gap: 1rem; text-align: center;
+    }
+    @media (min-width: 640px) { .trust__grid { grid-template-columns: repeat(3, 1fr); } }
+    .trust__item { display: flex; align-items: center; justify-content: center; gap: 0.6rem; font-weight: 600; font-size: 0.95rem; }
+    .trust__item span:first-child { font-size: 1.4rem; }
+
+    /* ══ 2. Cards de benefícios ══ */
+    .benefits { position: relative; overflow: hidden; }
+    .benefits__parallax-moon {
+      position: absolute; top: 8%; right: -140px; z-index: 0;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(212, 175, 55, 0.16), rgba(212, 175, 55, 0.03) 60%, transparent 75%);
+      pointer-events: none;
+    }
+    .benefits__grid {
+      position: relative; z-index: 1;
+      display: grid; gap: 1.3rem; grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) { .benefits__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .benefits__grid { grid-template-columns: repeat(3, 1fr); } }
+    .benefit-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.8rem 1.6rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .benefit-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .benefit-card__icon { font-size: 2rem; margin-bottom: 0.9rem; }
+    .benefit-card__pain { color: var(--gold); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; }
+    .benefit-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+    .benefit-card p { color: var(--muted); font-size: 0.94rem; }
+
+    /* ══ Showcase 3 em 1 ══ */
+    .showcase__grid { display: grid; gap: 2.5rem; align-items: center; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .showcase__grid { grid-template-columns: 1fr 1fr; } }
+    .showcase__media img { border-radius: 26px; box-shadow: 0 25px 70px rgba(0,0,0,0.55); }
+    .showcase h2 { font-size: clamp(1.6rem, 4vw, 2.3rem); margin-bottom: 1rem; }
+    .showcase p { color: var(--muted); margin-bottom: 1.5rem; }
+    .showcase__list { list-style: none; display: grid; gap: 0.9rem; }
+    .showcase__list li { display: flex; gap: 0.8rem; align-items: flex-start; }
+    .showcase__list .check {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: var(--gold-dim); border: 1px solid var(--border);
+      color: var(--gold); display: grid; place-items: center; font-size: 0.8rem; font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* ══ 3. Seção de números (contadores) ══ */
+    .stats { background: var(--bg-soft); border-block: 1px solid var(--border); }
+    .stats__grid { display: grid; gap: 2rem; grid-template-columns: repeat(2, 1fr); text-align: center; }
+    @media (min-width: 768px) { .stats__grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat__number {
+      font-family: var(--font-title); font-weight: 800;
+      font-size: clamp(2rem, 6vw, 3rem); color: var(--gold);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat__label { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+
+    /* ══ 4. Depoimentos ══ */
+    .testimonials { overflow: hidden; }
+    .testimonials__grid { display: grid; gap: 1.3rem; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .testimonials__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .testimonials__grid { grid-template-columns: repeat(4, 1fr); } }
+    .t-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.6rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.8rem;
+    }
+    .t-card__stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
+    .t-card__text { font-size: 0.95rem; color: #e8e5dc; flex: 1; }
+    .t-card__author { display: flex; align-items: center; gap: 0.7rem; }
+    .t-card__avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #8a6c1e);
+      color: #17130a; font-weight: 700; display: grid; place-items: center; font-size: 0.9rem;
+    }
+    .t-card__name { font-weight: 700; font-size: 0.9rem; }
+    .t-card__city { color: var(--muted); font-size: 0.8rem; }
+    .t-card__verified { color: #67c88a; font-size: 0.75rem; font-weight: 600; }
+
+    /* ══ Oferta ══ */
+    .offer { position: relative; overflow: hidden; }
+    .offer__glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 50% 45%, rgba(212, 175, 55, 0.1), transparent 70%);
+    }
+    .offer__box {
+      position: relative; z-index: 1;
+      max-width: 560px; margin: 0 auto;
+      background: var(--bg-card); border: 1.5px solid var(--gold);
+      border-radius: 24px; padding: 2.4rem clamp(1.4rem, 4vw, 2.6rem);
+      text-align: center;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5), 0 0 50px rgba(212, 175, 55, 0.12);
+    }
+    .offer__stock-badge {
+      display: inline-block; background: var(--red); color: #fff;
+      font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em;
+      padding: 0.45rem 1.1rem; border-radius: 999px; margin-bottom: 1.2rem;
+      animation: blink 1.8s ease-in-out infinite;
+    }
+    .offer__title { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 1.4rem; }
+    .offer__prices { display: flex; align-items: baseline; justify-content: center; gap: 0.9rem; flex-wrap: wrap; }
+    .offer__prices .price-new { font-size: clamp(2.4rem, 7vw, 3.2rem); }
+    .offer__installments { color: var(--muted); margin: 0.3rem 0 1.5rem; }
+
+    .countdown { display: flex; justify-content: center; gap: 0.7rem; margin-bottom: 1.7rem; }
+    .countdown__unit {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.6rem 0.4rem; min-width: 66px;
+    }
+    .countdown__value { font-family: var(--font-title); font-weight: 800; font-size: 1.5rem; color: var(--gold); font-variant-numeric: tabular-nums; }
+    .countdown__label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+    .offer__perks { list-style: none; display: grid; gap: 0.5rem; margin: 1.5rem 0 0; text-align: left; max-width: 340px; margin-inline: auto; }
+    .offer__perks li { display: flex; gap: 0.6rem; font-size: 0.92rem; color: #e8e5dc; }
+    .offer__perks li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+
+    .stock-meter { margin: 1.4rem auto 0; max-width: 340px; text-align: left; }
+    .stock-meter__bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; margin-top: 0.35rem; }
+    .stock-meter__fill { height: 100%; width: 18%; background: linear-gradient(90deg, var(--red), #ff7a3d); border-radius: 999px; }
+    .stock-meter__label { font-size: 0.8rem; color: #ff8f92; font-weight: 600; }
+
+    /* ══ FAQ ══ */
+    .faq__list { max-width: 720px; margin: 0 auto; display: grid; gap: 0.8rem; }
+    .faq__item {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq__item.open { border-color: var(--gold); }
+    .faq__question {
+      width: 100%; background: none; border: none; color: var(--white);
+      font-family: var(--font-title); font-weight: 700; font-size: 1rem;
+      padding: 1.15rem 1.3rem; text-align: left; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq__icon {
+      flex-shrink: 0; color: var(--gold); font-size: 1.3rem; font-weight: 400;
+      transition: transform 0.35s ease; line-height: 1;
+    }
+    .faq__item.open .faq__icon { transform: rotate(45deg); }
+    .faq__answer { height: 0; overflow: hidden; }
+    .faq__answer-inner { padding: 0 1.3rem 1.2rem; color: var(--muted); font-size: 0.95rem; }
+
+    /* ══ Newsletter ══ */
+    .newsletter {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.03));
+      border-block: 1px solid var(--border);
+    }
+    .newsletter__box { max-width: 620px; margin: 0 auto; text-align: center; }
+    .newsletter h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin-bottom: 0.6rem; }
+    .newsletter p { color: var(--muted); margin-bottom: 1.6rem; }
+    .newsletter__form { display: flex; flex-direction: column; gap: 0.8rem; }
+    @media (min-width: 560px) { .newsletter__form { flex-direction: row; } }
+    .newsletter__input {
+      flex: 1; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 999px; padding: 1rem 1.4rem; color: var(--white);
+      font-family: var(--font-body); font-size: 0.95rem; outline: none;
+      transition: border-color 0.3s;
+    }
+    .newsletter__input:focus { border-color: var(--gold); }
+    .newsletter__success { display: none; color: var(--gold); font-weight: 700; margin-top: 1rem; }
+
+    /* ══ Upsell ══ */
+    .upsell__grid { display: grid; gap: 1.3rem; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .upsell__grid { grid-template-columns: repeat(3, 1fr); } }
+    .u-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .u-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .u-card__visual {
+      height: 150px; display: grid; place-items: center; font-size: 3.2rem;
+      background: radial-gradient(circle at 50% 60%, rgba(212, 175, 55, 0.16), transparent 70%), var(--bg-soft);
+    }
+    .u-card__body { padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .u-card h3 { font-size: 1.05rem; }
+    .u-card p { color: var(--muted); font-size: 0.88rem; flex: 1; }
+    .u-card__price { font-family: var(--font-title); font-weight: 800; color: var(--gold); font-size: 1.15rem; }
+    .u-card__price s { color: var(--muted); font-weight: 400; font-size: 0.85rem; margin-right: 0.5rem; }
+
+    /* ══ Footer ══ */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0 7.5rem; /* espaço para o CTA fixo */
+      text-align: center; color: var(--muted); font-size: 0.85rem;
+    }
+    .footer .nav__logo { display: inline-block; margin-bottom: 0.8rem; }
+
+    /* ══ 5. CTA fixo (sticky) ══ */
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 950;
+      background: rgba(26, 26, 26, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--gold);
+      padding: 0.8rem 4%;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      opacity: 0; visibility: hidden; transform: translateY(100%);
+    }
+    .sticky-cta__info { display: flex; flex-direction: column; line-height: 1.3; }
+    .sticky-cta__price { font-family: var(--font-title); font-weight: 800; color: var(--gold); font-size: 1.15rem; }
+    .sticky-cta__old { font-size: 0.75rem; color: var(--muted); }
+    .sticky-cta__old s { margin-right: 0.4rem; }
+    .sticky-cta .btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; white-space: nowrap; }
+
+    /* Acessibilidade: sem animações para quem prefere movimento reduzido */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ═══ Barra de anúncio ═══ -->
-  <div class="topbar">
-    <div class="topbar__track">
-      <span>🚚 FRETE GRÁTIS PARA O MUNDO TODO</span><i>✦</i>
-      <span>🔥 50% OFF — ESTOQUE LIMITADO: APENAS 20 UNIDADES</span><i>✦</i>
-      <span>🛡️ 7 DIAS DE GARANTIA OU SEU DINHEIRO DE VOLTA</span><i>✦</i>
-      <span>🚚 FRETE GRÁTIS PARA O MUNDO TODO</span><i>✦</i>
-      <span>🔥 50% OFF — ESTOQUE LIMITADO: APENAS 20 UNIDADES</span><i>✦</i>
-      <span>🛡️ 7 DIAS DE GARANTIA OU SEU DINHEIRO DE VOLTA</span><i>✦</i>
-    </div>
+  <!-- 7. Indicador de progresso do scroll -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- Barra de urgência com cronômetro -->
+  <div class="urgency-bar">
+    🔥 OFERTA RELÂMPAGO: 48% OFF termina em <strong id="urgency-timer">23:59:59</strong> — Restam apenas <strong>20 unidades</strong>!
   </div>
 
-  <!-- ═══ Navegação ═══ -->
-  <nav class="nav" id="nav">
+  <!-- Navegação -->
+  <nav class="nav">
     <a href="#inicio" class="nav__logo">🌙 LUNARIS</a>
     <ul class="nav__links">
       <li><a href="#beneficios">Benefícios</a></li>
-      <li><a href="#especificacoes">Especificações</a></li>
-      <li><a href="#avaliacoes">Avaliações</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#oferta">Oferta</a></li>
       <li><a href="#faq">Dúvidas</a></li>
     </ul>
-    <a href="#oferta" class="btn btn--small nav__buy">Comprar agora</a>
+    <a href="#oferta" class="btn btn--small">Comprar Agora</a>
   </nav>
 
-  <!-- ═══ Hero ═══ -->
+  <!-- 1. HERO -->
   <header class="hero" id="inicio">
-    <div class="hero__stars" aria-hidden="true"></div>
+    <canvas class="parallax-stars" id="stars-canvas" aria-hidden="true"></canvas>
+    <div class="parallax-glow" data-parallax aria-hidden="true"></div>
+
     <div class="hero__grid container">
       <div class="hero__copy">
-        <p class="hero__eyebrow reveal">⭐ 4,9/5 — o presente mais desejado do ano</p>
-        <h1 class="hero__title reveal">A magia da lua no seu quarto — <em>luz, névoa e aroma</em> em um só produto</h1>
-        <p class="hero__sub reveal">A <strong>Luminária Lua 3D com Umidificador 880ML</strong> reproduz a superfície
-          lunar em detalhes realistas, emite uma luz quente relaxante e libera uma névoa fina que hidrata o ar —
-          combine com óleos essenciais e transforme qualquer ambiente em um spa.</p>
-        <ul class="hero__bullets reveal">
-          <li>✅ Durma melhor: luz quente + ar hidratado a noite toda</li>
-          <li>✅ Reservatório de 880ML — 8 a 12h de uso contínuo</li>
-          <li>✅ Silenciosa (&lt;35dB) com desligamento automático</li>
-          <li>✅ Cobre ambientes de até 15-20m²</li>
-        </ul>
-        <div class="hero__price reveal">
-          <span class="price-old">De <s>US$ 119,99</s> <b class="price-badge">-50%</b></span>
-          <span class="price-now">US$ 59,99</span>
-          <span class="price-installments">ou 12x de US$ 5,83 no cartão</span>
+        <p class="hero__eyebrow" data-hero>⭐ 4,9/5 — mais de 7.500 clientes apaixonadas</p>
+        <h1 class="hero__title" data-hero>Tenha um Pedaço da Lua no Seu Quarto <em>🌙</em></h1>
+        <p class="hero__sub" data-hero>Luminária + Umidificador + Difusor de Aromas em Um Só Produto. Transforme seu ambiente em um refúgio de paz com luz quente, névoa relaxante e o aroma que você ama.</p>
+
+        <div class="hero__price" data-hero>
+          <span class="price-old">R$ 249,90</span>
+          <span class="price-new">R$ 129,90</span>
+          <span class="badge-off">48% OFF</span>
         </div>
-        <div class="hero__cta reveal">
-          <a href="#oferta" class="btn btn--big pulse">QUERO A MINHA COM 50% OFF →</a>
-          <p class="hero__stock">⚠️ Estoque limitado: restam <strong id="stockCount">20</strong> unidades</p>
-        </div>
-        <div class="hero__trust reveal">
-          <span>🔒 Checkout 100% seguro</span>
-          <span>🚚 Frete grátis mundial</span>
-          <span>🛡️ 7 dias de garantia</span>
+        <p class="hero__installments" data-hero>ou <strong>12x de R$ 12,90</strong> sem juros · Frete GRÁTIS para todo o Brasil</p>
+
+        <div class="hero__cta-group" data-hero>
+          <a href="#oferta" class="btn btn--pulse">🌙 Garanta Sua Lua Agora</a>
+          <span class="hero__stock"><span class="dot"></span> Estoque Limitado — Peça Agora</span>
         </div>
       </div>
 
-      <div class="hero__product reveal">
-        <div class="gallery">
-          <div class="gallery__main">
-            <img id="galleryMain" src="img/produto-1.jpg" alt="Luminária Lua 3D com Umidificador acesa sobre base de madeira com névoa saindo do topo" />
-            <div class="hero__badge">-50%<small>HOJE</small></div>
-          </div>
-          <div class="gallery__thumbs">
-            <button class="gallery__thumb active" data-img="img/produto-1.jpg"><img src="img/produto-1.jpg" alt="Lua 3D com névoa no criado-mudo" /></button>
-            <button class="gallery__thumb" data-img="img/produto-2.jpg"><img src="img/produto-2.jpg" alt="Mãos segurando a lua acesa" /></button>
-            <button class="gallery__thumb" data-img="img/produto-3.jpg"><img src="img/produto-3.jpg" alt="Close da luminária na base de madeira" /></button>
-            <button class="gallery__thumb" data-img="img/produto-4.jpg"><img src="img/produto-4.jpg" alt="Luminária no quarto ao lado da cama" /></button>
-          </div>
-        </div>
+      <div class="hero__media" data-hero-img>
+        <img src="img/produto-2.jpg" alt="Luminária Lua 3D brilhando nas mãos, com superfície lunar realista" fetchpriority="high" />
+        <div class="hero__float">💧 880ML de reservatório · até 12h de névoa</div>
       </div>
     </div>
   </header>
 
-  <!-- ═══ Contagem regressiva ═══ -->
-  <section class="countdown" id="oferta-timer">
-    <div class="container countdown__inner">
-      <p>🔥 A oferta de <strong>50% OFF + frete grátis</strong> termina em:</p>
-      <div class="countdown__timer" id="timer">
-        <div class="t-box"><span id="tHours">05</span><small>horas</small></div>
-        <div class="t-sep">:</div>
-        <div class="t-box"><span id="tMins">42</span><small>min</small></div>
-        <div class="t-sep">:</div>
-        <div class="t-box"><span id="tSecs">18</span><small>seg</small></div>
-      </div>
+  <!-- 3. Selos de confiança -->
+  <section class="trust">
+    <div class="container trust__grid">
+      <div class="trust__item" data-reveal><span>🔒</span> Compra 100% Segura</div>
+      <div class="trust__item" data-reveal><span>🚚</span> Frete Grátis para Todo o Brasil</div>
+      <div class="trust__item" data-reveal><span>🛡️</span> 7 Dias de Garantia</div>
     </div>
   </section>
 
-  <!-- ═══ Benefícios ═══ -->
+  <!-- 2. BENEFÍCIOS (dor → solução) -->
   <section class="section benefits" id="beneficios">
+    <div class="benefits__parallax-moon" data-parallax-slow aria-hidden="true"></div>
     <div class="container">
-      <p class="section__eyebrow reveal">POR QUE TODO MUNDO QUER UMA</p>
-      <h2 class="section__title reveal">3 produtos em 1, por um só preço</h2>
+      <h2 class="section-title" data-reveal>Ela resolve <span class="gold">5 problemas</span> de uma vez</h2>
+      <p class="section-sub" data-reveal>Muito mais que uma luminária bonita: é bem-estar de verdade, todas as noites.</p>
+
       <div class="benefits__grid">
-        <article class="benefit-card reveal">
+        <article class="benefit-card" data-benefit>
+          <div class="benefit-card__icon">💧</div>
+          <p class="benefit-card__pain">Ar seco em casa?</p>
+          <h3>Umidificação por até 12 horas</h3>
+          <p>O reservatório de 880ML libera uma névoa fina e contínua que hidrata o ar por 8 a 12 horas — adeus garganta seca e pele ressecada.</p>
+        </article>
+
+        <article class="benefit-card" data-benefit>
+          <div class="benefit-card__icon">😴</div>
+          <p class="benefit-card__pain">Dorme mal?</p>
+          <h3>Luz quente que ajuda a dormir</h3>
+          <p>A luz âmbar relaxante favorece a produção natural de melatonina, preparando seu corpo para um sono profundo e restaurador.</p>
+        </article>
+
+        <article class="benefit-card" data-benefit>
           <div class="benefit-card__icon">🌙</div>
-          <h3>Luminária Lua 3D realista</h3>
-          <p>Superfície lunar reproduzida em detalhes com impressão 3D. LED de luz quente que cria um clima luxuoso, romântico e relaxante — estética digna de Instagram.</p>
+          <p class="benefit-card__pain">Quarto sem graça?</p>
+          <h3>Design de lua ultrarrealista</h3>
+          <p>Impressa em 3D com crateras e texturas fiéis à superfície lunar, ela transforma qualquer ambiente em um cenário de revista.</p>
         </article>
-        <article class="benefit-card reveal" data-delay="120">
-          <div class="benefit-card__icon">💨</div>
-          <h3>Umidificador ultrassônico</h3>
-          <p>Névoa fria de 30-50ml/hora que hidrata o ar seco — o vilão do nariz ressecado e das noites mal dormidas. Reservatório de 880ML para 8-12h contínuas.</p>
+
+        <article class="benefit-card" data-benefit>
+          <div class="benefit-card__icon">🎁</div>
+          <p class="benefit-card__pain">Sem ideia de presente?</p>
+          <h3>O presente único e inesquecível</h3>
+          <p>Surpreenda quem você ama com um pedaço da lua. É o tipo de presente que ninguém esquece — e todo mundo comenta.</p>
         </article>
-        <article class="benefit-card reveal" data-delay="240">
-          <div class="benefit-card__icon">🌿</div>
-          <h3>Difusor de aromas</h3>
-          <p>Pingue 2-3 gotas do seu óleo essencial hidrossolúvel favorito. Lavanda para dormir, eucalipto para respirar melhor — atmosfera de spa em casa.</p>
-        </article>
-        <article class="benefit-card reveal">
-          <div class="benefit-card__icon">🔇</div>
-          <h3>Silenciosa de verdade</h3>
-          <p>Menos de 35dB — mais silenciosa que um sussurro. Perfeita para o quarto do casal, das crianças ou do bebê. Você só sente o ar mais leve.</p>
-        </article>
-        <article class="benefit-card reveal" data-delay="120">
-          <div class="benefit-card__icon">🔋</div>
-          <h3>USB recarregável, sem fio</h3>
-          <p>Funciona com qualquer carregador USB padrão (5V) e consome só ~2W. Leve para o quarto, escritório ou viagem — vem com cabo USB e base de madeira.</p>
-        </article>
-        <article class="benefit-card reveal" data-delay="240">
+
+        <article class="benefit-card" data-benefit>
           <div class="benefit-card__icon">🛡️</div>
-          <h3>Desligamento automático</h3>
-          <p>Acabou a água? Ela desliga sozinha. Segurança total para deixar ligada a noite inteira sem preocupação nenhuma.</p>
+          <p class="benefit-card__pain">Tá em dúvida?</p>
+          <h3>7 dias de garantia total</h3>
+          <p>Teste sem medo: se não amar, devolvemos seu dinheiro em até 7 dias, sem perguntas e sem burocracia.</p>
+        </article>
+
+        <article class="benefit-card" data-benefit>
+          <div class="benefit-card__icon">🌿</div>
+          <p class="benefit-card__pain">Quer relaxar mais?</p>
+          <h3>Difusor de aromas integrado</h3>
+          <p>Adicione 2-3 gotas do seu óleo essencial favorito e transforme seu quarto em um spa particular todas as noites.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- ═══ Prova social / números ═══ -->
-  <section class="stats">
-    <div class="container stats__grid">
-      <div class="stat reveal"><span class="stat__value" data-count="880" data-suffix="ML">0</span><span class="stat__label">de reservatório</span></div>
-      <div class="stat reveal" data-delay="120"><span class="stat__value" data-count="12" data-suffix="h">0</span><span class="stat__label">de autonomia contínua</span></div>
-      <div class="stat reveal" data-delay="240"><span class="stat__value" data-count="35" data-prefix="&lt;" data-suffix="dB">0</span><span class="stat__label">silenciosa como um sussurro</span></div>
-      <div class="stat reveal" data-delay="360"><span class="stat__value" data-count="20" data-suffix="m²">0</span><span class="stat__label">de cobertura de ambiente</span></div>
-    </div>
-  </section>
-
-  <!-- ═══ Especificações + o que vem na caixa ═══ -->
-  <section class="section specs" id="especificacoes">
-    <div class="container specs__grid">
-      <div class="reveal">
-        <h2 class="specs__title">Especificações técnicas</h2>
-        <table class="specs__table">
-          <tr><td>Reservatório</td><td>880ML</td></tr>
-          <tr><td>Autonomia</td><td>8-12 horas contínuas</td></tr>
-          <tr><td>Saída de névoa</td><td>~30-50ml/hora (ultrassônica fria)</td></tr>
-          <tr><td>Iluminação</td><td>LED luz quente</td></tr>
-          <tr><td>Alimentação</td><td>USB recarregável (5V, ~2W)</td></tr>
-          <tr><td>Diâmetro</td><td>~13-15cm</td></tr>
-          <tr><td>Peso</td><td>~300-400g</td></tr>
-          <tr><td>Material</td><td>PP/ABS + PLA (impressão 3D)</td></tr>
-          <tr><td>Ruído</td><td>&lt;35dB</td></tr>
-          <tr><td>Desligamento automático</td><td>Sim</td></tr>
-          <tr><td>Compatível com óleos essenciais</td><td>Sim (hidrossolúveis)</td></tr>
-        </table>
+  <!-- Showcase 3 em 1 -->
+  <section class="section showcase">
+    <div class="container showcase__grid">
+      <div class="showcase__media" data-reveal>
+        <img src="img/produto-4.jpg" alt="Luminária Lua 3D com névoa em uma mesa de cabeceira ao lado da cama" loading="lazy" />
       </div>
-      <div class="reveal" data-delay="150">
-        <h2 class="specs__title">O que vem na caixa 📦</h2>
-        <ul class="specs__box">
-          <li>🌙 1x Luminária Lua 3D com umidificador</li>
-          <li>🪵 1x Base de madeira</li>
-          <li>🔌 1x Cabo USB</li>
-          <li>📖 1x Manual de instruções</li>
+      <div data-reveal>
+        <h2>3 produtos em 1: <span class="gold">luz, névoa e aroma</span></h2>
+        <p>Enquanto uma luminária comum só ilumina, a LUNARIS cria uma experiência completa de bem-estar para o seu quarto.</p>
+        <ul class="showcase__list">
+          <li><span class="check">✓</span><span><strong>Luminária Lua 3D</strong> — luz quente e aconchegante com toque suave para ligar e ajustar</span></li>
+          <li><span class="check">✓</span><span><strong>Umidificador 880ML</strong> — névoa ultrassônica silenciosa (menos de 35dB) por até 12 horas</span></li>
+          <li><span class="check">✓</span><span><strong>Difusor de Aromas</strong> — compatível com óleos essenciais hidrossolúveis</span></li>
+          <li><span class="check">✓</span><span><strong>Base de madeira + cabo USB</strong> — tudo incluso na caixa, pronto para usar</span></li>
         </ul>
-        <div class="specs__note">
-          <p><strong>Duas versões disponíveis:</strong></p>
-          <p>🔋 <strong>À Bateria</strong> — recarregável, use sem fio em qualquer lugar</p>
-          <p>🔌 <strong>USB</strong> — conecte em qualquer carregador padrão</p>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ Comparação ═══ -->
-  <section class="section compare">
+  <!-- 3. NÚMEROS (contadores) -->
+  <section class="section stats" id="numeros">
+    <div class="container stats__grid">
+      <div class="stat" data-stat>
+        <div class="stat__number"><span class="counter" data-target="880">0</span>ML</div>
+        <div class="stat__label">de reservatório de água</div>
+      </div>
+      <div class="stat" data-stat>
+        <div class="stat__number"><span class="counter" data-target="12">0</span>h</div>
+        <div class="stat__label">de névoa contínua</div>
+      </div>
+      <div class="stat" data-stat>
+        <div class="stat__number"><span class="counter" data-target="7500">0</span>+</div>
+        <div class="stat__label">clientes satisfeitas</div>
+      </div>
+      <div class="stat" data-stat>
+        <div class="stat__number"><span class="counter" data-target="4.9" data-decimals="1">0</span>★</div>
+        <div class="stat__label">nota média de avaliação</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DEPOIMENTOS -->
+  <section class="section testimonials" id="depoimentos">
     <div class="container">
-      <h2 class="section__title reveal">LUNARIS vs. umidificadores comuns</h2>
-      <div class="compare__table reveal">
-        <div class="compare__row compare__row--head">
-          <div></div><div class="compare__us">🌙 LUNARIS</div><div>Comuns</div>
-        </div>
-        <div class="compare__row"><div>Ilumina + umidifica + aromatiza</div><div class="yes">✔</div><div class="no">✘</div></div>
-        <div class="compare__row"><div>Design Lua 3D decorativo</div><div class="yes">✔</div><div class="no">✘</div></div>
-        <div class="compare__row"><div>Silenciosa (&lt; 35dB)</div><div class="yes">✔</div><div class="no">✘</div></div>
-        <div class="compare__row"><div>Desligamento automático</div><div class="yes">✔</div><div class="no">✘</div></div>
-        <div class="compare__row"><div>USB — funciona em qualquer lugar</div><div class="yes">✔</div><div class="no">✘</div></div>
-        <div class="compare__row"><div>Frete grátis + 7 dias de garantia</div><div class="yes">✔</div><div class="no">✘</div></div>
+      <h2 class="section-title" data-reveal>Quem comprou, <span class="gold">amou</span> 💛</h2>
+      <p class="section-sub" data-reveal>Avaliações reais de clientes de todo o Brasil.</p>
+
+      <div class="testimonials__grid">
+        <article class="t-card" data-testimonial>
+          <div class="t-card__stars">⭐⭐⭐⭐⭐</div>
+          <p class="t-card__text">“Comprei pro meu quarto e mudou completamente o clima. Durmo muito melhor!”</p>
+          <div class="t-card__author">
+            <div class="t-card__avatar">MS</div>
+            <div>
+              <div class="t-card__name">Mariana S.</div>
+              <div class="t-card__city">São Paulo, SP</div>
+              <div class="t-card__verified">✓ Compra verificada</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card" data-testimonial>
+          <div class="t-card__stars">⭐⭐⭐⭐⭐</div>
+          <p class="t-card__text">“Presente perfeito pro meu namorado. Ele AMOU! A luz é linda demais.”</p>
+          <div class="t-card__author">
+            <div class="t-card__avatar">JR</div>
+            <div>
+              <div class="t-card__name">Juliana R.</div>
+              <div class="t-card__city">Rio de Janeiro, RJ</div>
+              <div class="t-card__verified">✓ Compra verificada</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card" data-testimonial>
+          <div class="t-card__stars">⭐⭐⭐⭐⭐</div>
+          <p class="t-card__text">“Chegou rápido e a qualidade me surpreendeu. Uso todo dia com óleo de lavanda.”</p>
+          <div class="t-card__author">
+            <div class="t-card__avatar">CF</div>
+            <div>
+              <div class="t-card__name">Camila F.</div>
+              <div class="t-card__city">Belo Horizonte, MG</div>
+              <div class="t-card__verified">✓ Compra verificada</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card" data-testimonial>
+          <div class="t-card__stars">⭐⭐⭐⭐⭐</div>
+          <p class="t-card__text">“Meu quarto virou um spa! Super recomendo, vale cada centavo.”</p>
+          <div class="t-card__author">
+            <div class="t-card__avatar">FL</div>
+            <div>
+              <div class="t-card__name">Fernanda L.</div>
+              <div class="t-card__city">Curitiba, PR</div>
+              <div class="t-card__verified">✓ Compra verificada</div>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ═══ Oferta ═══ -->
+  <!-- OFERTA -->
   <section class="section offer" id="oferta">
+    <div class="offer__glow" aria-hidden="true"></div>
     <div class="container">
-      <p class="section__eyebrow reveal">OFERTA POR TEMPO LIMITADO — APENAS 20 UNIDADES</p>
-      <h2 class="section__title reveal">Garanta a sua com 50% OFF</h2>
+      <div class="offer__box" data-reveal>
+        <span class="offer__stock-badge">🔥 RESTAM APENAS 20 UNIDADES</span>
+        <h2 class="offer__title">Garanta a sua antes<br />que o estoque acabe</h2>
 
-      <div class="offer__single reveal">
-        <div class="offer__image">
-          <img src="img/produto-4.jpg" alt="Luminária Lua 3D acesa com névoa" />
-        </div>
-        <div class="offer__details">
-          <h3>Luminária Lua 3D com Umidificador 880ML</h3>
-          <div class="offer__stars">★★★★★ <small>4,9/5</small></div>
-
-          <p class="offer__variant-label">Escolha sua versão:</p>
-          <div class="offer__variants" id="variantPicker">
-            <button class="variant active" data-variant="À Bateria">🔋 À Bateria<small>use sem fio</small></button>
-            <button class="variant" data-variant="USB">🔌 USB<small>plugue e use</small></button>
+        <div class="countdown" aria-label="Tempo restante da oferta">
+          <div class="countdown__unit">
+            <div class="countdown__value" id="cd-hours">23</div>
+            <div class="countdown__label">horas</div>
           </div>
-
-          <div class="offer__pricing">
-            <span class="offer__old"><s>US$ 119,99</s> <b class="price-badge">50% OFF</b></span>
-            <span class="offer__price">US$ 59,99</span>
-            <span class="offer__inst">ou 12x de <strong>US$ 5,83</strong> no cartão</span>
+          <div class="countdown__unit">
+            <div class="countdown__value" id="cd-mins">59</div>
+            <div class="countdown__label">min</div>
           </div>
-
-          <a href="#" class="btn btn--big pulse buy-btn offer__buy">COMPRAR AGORA COM 50% OFF →</a>
-
-          <div class="offer__assurances">
-            <span>🚚 Frete grátis mundial — envio em até 24h com rastreio</span>
-            <span>🛡️ 7 dias de garantia — devolução do dinheiro</span>
-            <span>🔒 Pagamento 100% seguro</span>
-          </div>
-
-          <div class="offer__stock-bar">
-            <div class="stock-bar"><div class="stock-bar__fill" id="stockBar"></div></div>
-            <p>⚠️ Restam <strong id="stockCount2">20</strong> de 20 unidades do lote promocional</p>
+          <div class="countdown__unit">
+            <div class="countdown__value" id="cd-secs">59</div>
+            <div class="countdown__label">seg</div>
           </div>
         </div>
-      </div>
 
-      <div class="offer__payments reveal">
-        <span>Pagamento seguro via:</span>
-        <span class="pay-chip">💳 Cartão em até 12x</span>
-        <span class="pay-chip">🔒 Stripe</span>
-        <span class="pay-chip">✅ Checkout criptografado</span>
-      </div>
-    </div>
-  </section>
+        <div class="offer__prices">
+          <span class="price-old">R$ 249,90</span>
+          <span class="price-new">R$ 129,90</span>
+          <span class="badge-off">48% OFF</span>
+        </div>
+        <p class="offer__installments">ou <strong>12x de R$ 12,90</strong> sem juros</p>
 
-  <!-- ═══ Casos de uso ═══ -->
-  <section class="section usecases">
-    <div class="container">
-      <h2 class="section__title reveal">Feita para os seus melhores momentos</h2>
-      <div class="usecases__grid">
-        <article class="usecase reveal">
-          <div class="usecase__icon">😴</div>
-          <h3>Para dormir melhor</h3>
-          <p>A luz quente relaxa, a névoa hidrata o ar seco que causa insônia e o silêncio total não atrapalha. Acorde renovado(a).</p>
-        </article>
-        <article class="usecase reveal" data-delay="120">
-          <div class="usecase__icon">💑</div>
-          <h3>Para o clima a dois</h3>
-          <p>Luz + névoa = atmosfera de spa. O design realista da lua cria um clima romântico e luxuoso no quarto do casal.</p>
-        </article>
-        <article class="usecase reveal" data-delay="240">
-          <div class="usecase__icon">🫁</div>
-          <h3>Para a sua saúde</h3>
-          <p>Ar mais úmido melhora a respiração e reduz o ressecamento de nariz e garganta. Some a aromaterapia e sinta a diferença.</p>
-        </article>
-        <article class="usecase reveal" data-delay="360">
-          <div class="usecase__icon">🎁</div>
-          <h3>Para presentear</h3>
-          <p>Um presente único, memorável e fotogênico. Quem recebe nunca esquece — e sempre pergunta onde comprou.</p>
-        </article>
+        <a href="#oferta" class="btn btn--full btn--pulse" id="buy-btn">Comprar Agora — Estoque Limitado</a>
+
+        <ul class="offer__perks">
+          <li>Frete GRÁTIS para todo o Brasil</li>
+          <li>Luminária + base de madeira + cabo USB + manual</li>
+          <li>7 dias de garantia com devolução do dinheiro</li>
+          <li>Pagamento 100% seguro (Pix, cartão ou boleto)</li>
+        </ul>
+
+        <div class="stock-meter">
+          <span class="stock-meter__label">⚠️ 82% do estoque já vendido</span>
+          <div class="stock-meter__bar"><div class="stock-meter__fill" id="stock-fill"></div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ Avaliações ═══ -->
-  <section class="section reviews" id="avaliacoes">
-    <div class="container">
-      <p class="section__eyebrow reveal">QUEM COMPROU, AMOU</p>
-      <h2 class="section__title reveal">⭐ 4,9/5 de avaliação média</h2>
-      <div class="reviews__grid">
-        <article class="review reveal">
-          <div class="review__head">
-            <span class="review__avatar" style="--av:#f0a3a3">M</span>
-            <div><strong>Mariana S.</strong><small>São Paulo, SP ✔ Compra verificada</small></div>
-          </div>
-          <div class="review__stars">★★★★★</div>
-          <p>"Comprei para o quarto do meu bebê e foi a melhor coisa! Ele dormia mal com o ar seco, agora dorme a noite toda. A luzinha é linda demais."</p>
-        </article>
-        <article class="review reveal" data-delay="120">
-          <div class="review__head">
-            <span class="review__avatar" style="--av:#9ecba8">R</span>
-            <div><strong>Rafael T.</strong><small>Belo Horizonte, MG ✔ Compra verificada</small></div>
-          </div>
-          <div class="review__stars">★★★★★</div>
-          <p>"Achei que era só mais uma luminária bonitinha, mas o umidificador é potente de verdade. Uso com óleo de lavanda e durmo muito melhor."</p>
-        </article>
-        <article class="review reveal" data-delay="240">
-          <div class="review__head">
-            <span class="review__avatar" style="--av:#a3b6f0">C</span>
-            <div><strong>Camila R.</strong><small>Curitiba, PR ✔ Compra verificada</small></div>
-          </div>
-          <div class="review__stars">★★★★★</div>
-          <p>"Chegou super bem embalada, com a base de madeira linda. Dei uma de presente pra minha mãe — ela ficou apaixonada. Recomendo muito!"</p>
-        </article>
-        <article class="review reveal">
-          <div class="review__head">
-            <span class="review__avatar" style="--av:#e8c78f">J</span>
-            <div><strong>João Pedro M.</strong><small>Recife, PE ✔ Compra verificada</small></div>
-          </div>
-          <div class="review__stars">★★★★★</div>
-          <p>"Silenciosa mesmo, não faz barulho nenhum. O reservatório de 880ml dura a noite inteira. Melhor custo-benefício que já vi."</p>
-        </article>
-        <article class="review reveal" data-delay="120">
-          <div class="review__head">
-            <span class="review__avatar" style="--av:#d3a3f0">A</span>
-            <div><strong>Ana Clara F.</strong><small>Rio de Janeiro, RJ ✔ Compra verificada</small></div>
-          </div>
-          <div class="review__stars">★★★★☆</div>
-          <p>"Produto lindo e funcional. Só demorou um pouquinho mais que o previsto pra chegar, mas veio com rastreio e o suporte me atendeu super bem."</p>
-        </article>
-        <article class="review reveal" data-delay="240">
-          <div class="review__head">
-            <span class="review__avatar" style="--av:#8fd8e8">L</span>
-            <div><strong>Lucas V.</strong><small>Porto Alegre, RS ✔ Compra verificada</small></div>
-          </div>
-          <div class="review__stars">★★★★★</div>
-          <p>"Comprei pra decorar meu setup e virou meu item favorito. Todo mundo que vê pergunta onde comprei. Já indiquei pra 5 amigos."</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ Garantia ═══ -->
-  <section class="section guarantee">
-    <div class="container guarantee__inner reveal">
-      <div class="guarantee__seal">🛡️<span>7 DIAS</span></div>
-      <div>
-        <h2>Risco zero: garantia incondicional de 7 dias</h2>
-        <p>Receba, teste e use a sua Luminária Lua 3D. Se por qualquer motivo você não amar,
-          devolvemos <strong>100% do seu dinheiro</strong>, sem perguntas e sem burocracia.
-          Você não tem nada a perder — e noites muito melhores a ganhar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ FAQ ═══ -->
+  <!-- FAQ -->
   <section class="section faq" id="faq">
-    <div class="container container--narrow">
-      <h2 class="section__title reveal">Perguntas frequentes</h2>
-      <details class="faq__item reveal">
-        <summary>Quanto tempo dura com uma carga completa? <span>+</span></summary>
-        <p>De 8 a 12 horas, dependendo da intensidade da névoa. O reservatório de 880ML acompanha a autonomia: uma carga cobre a noite inteira.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>Posso usar óleos essenciais? <span>+</span></summary>
-        <p>Sim! Use 2-3 gotas de óleos essenciais hidrossolúveis na água. Lavanda, eucalipto, capim-limão — o aroma se espalha junto com a névoa.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>É barulhenta? <span>+</span></summary>
-        <p>Não. Ela opera abaixo de 35dB — mais silenciosa que um sussurro. Perfeita para dormir, inclusive em quartos de bebê.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>O que vem incluído? <span>+</span></summary>
-        <p>A luminária com umidificador, a base de madeira, o cabo USB e o manual de instruções.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>Vocês entregam no Brasil? <span>+</span></summary>
-        <p>Sim! Frete grátis para o mundo todo, com envio em até 24h e código de rastreio incluso.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>Qual a voltagem? Preciso de adaptador? <span>+</span></summary>
-        <p>Não precisa. É USB (5V): funciona com qualquer carregador de celular padrão, notebook ou power bank, em qualquer país.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>Cobre quartos grandes? <span>+</span></summary>
-        <p>Sim, ela cobre ambientes de até 15-20m² — o tamanho da maioria dos quartos e escritórios.</p>
-      </details>
-      <details class="faq__item reveal">
-        <summary>E se eu não gostar? <span>+</span></summary>
-        <p>Você tem 7 dias de garantia incondicional após o recebimento. Não amou? Devolvemos 100% do valor, sem perguntas.</p>
-      </details>
-    </div>
-  </section>
+    <div class="container">
+      <h2 class="section-title" data-reveal>Perguntas <span class="gold">Frequentes</span></h2>
+      <p class="section-sub" data-reveal>Tudo o que você precisa saber antes de garantir a sua.</p>
 
-  <!-- ═══ CTA final ═══ -->
-  <section class="final-cta">
-    <div class="container final-cta__inner">
-      <h2 class="reveal">Suas melhores noites começam hoje 🌙</h2>
-      <p class="reveal">Apenas <strong id="stockCount3">20</strong> unidades no lote promocional com 50% OFF e frete grátis mundial.</p>
-      <a href="#oferta" class="btn btn--big pulse reveal">GARANTIR A MINHA POR US$ 59,99 →</a>
-    </div>
-  </section>
-
-  <!-- ═══ Rodapé ═══ -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div>
-        <p class="footer__logo">🌙 LUNARIS</p>
-        <p class="footer__about">Produtos que transformam sua casa em um lugar mais aconchegante, saudável e bonito.</p>
-      </div>
-      <div>
-        <p class="footer__title">Institucional</p>
-        <a href="#">Quem somos</a>
-        <a href="#">Política de privacidade</a>
-        <a href="#">Trocas e devoluções</a>
-        <a href="#">Termos de uso</a>
-      </div>
-      <div>
-        <p class="footer__title">Atendimento</p>
-        <a href="mailto:contato@lunaris.store">contato@lunaris.store</a>
-        <a href="#">Rastrear meu pedido</a>
-        <a href="#">Seg. a Sex. — 9h às 18h</a>
-      </div>
-      <div>
-        <p class="footer__title">Pagamento seguro</p>
-        <div class="footer__pay">
-          <span>💳 Visa</span><span>💳 Master</span><span>💳 Amex</span><span>🔒 Stripe</span>
+      <div class="faq__list">
+        <div class="faq__item" data-reveal>
+          <button class="faq__question" aria-expanded="false">Quanto tempo dura a bateria?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><div class="faq__answer-inner">De 8 a 12 horas dependendo da intensidade da névoa.</div></div>
         </div>
-        <p class="footer__ssl">🔒 Site protegido por SSL</p>
+        <div class="faq__item" data-reveal>
+          <button class="faq__question" aria-expanded="false">Posso usar óleos essenciais?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><div class="faq__answer-inner">Sim! Adicione 2-3 gotas de óleos essenciais hidrossolúveis.</div></div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__question" aria-expanded="false">É barulhento?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><div class="faq__answer-inner">Não, é super silencioso (menos de 35dB) — perfeito para dormir.</div></div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__question" aria-expanded="false">O que vem na caixa?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><div class="faq__answer-inner">A luminária, base de madeira, cabo USB e manual.</div></div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__question" aria-expanded="false">Vocês entregam em todo o Brasil?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><div class="faq__answer-inner">Sim! Frete grátis para todo o território nacional.</div></div>
+        </div>
+        <div class="faq__item" data-reveal>
+          <button class="faq__question" aria-expanded="false">Tem garantia?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><div class="faq__answer-inner">Sim, 7 dias de garantia com devolução do dinheiro.</div></div>
+        </div>
       </div>
     </div>
-    <p class="footer__legal">© 2026 LUNARIS. Todos os direitos reservados.</p>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section newsletter">
+    <div class="container newsletter__box" data-reveal>
+      <h2>Ganhe <span class="gold">10% de Desconto</span> 💌</h2>
+      <p>Cadastre seu e-mail e receba um cupom exclusivo de 10% OFF na primeira compra, além de dicas de decoração e bem-estar.</p>
+      <form class="newsletter__form" id="newsletter-form" novalidate>
+        <input class="newsletter__input" type="email" name="email" placeholder="Seu melhor e-mail" required aria-label="Seu e-mail" />
+        <button class="btn" type="submit">Quero Meu Desconto</button>
+      </form>
+      <p class="newsletter__success" id="newsletter-success">🎉 Pronto! Seu cupom de 10% chegará no seu e-mail em instantes.</p>
+    </div>
+  </section>
+
+  <!-- Upsell -->
+  <section class="section upsell">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Complete o seu <span class="gold">ritual noturno</span></h2>
+      <p class="section-sub" data-reveal>Quem levou a Lua também amou estes produtos.</p>
+
+      <div class="upsell__grid">
+        <article class="u-card" data-benefit>
+          <div class="u-card__visual" aria-hidden="true">🪻</div>
+          <div class="u-card__body">
+            <h3>Kit Óleos Essenciais Relax (3un)</h3>
+            <p>Lavanda, camomila e eucalipto hidrossolúveis — perfeitos para usar na sua Lua.</p>
+            <span class="u-card__price"><s>R$ 89,90</s>R$ 49,90</span>
+            <a href="#oferta" class="btn btn--ghost btn--small">Adicionar ao Pedido</a>
+          </div>
+        </article>
+
+        <article class="u-card" data-benefit>
+          <div class="u-card__visual" aria-hidden="true">✨</div>
+          <div class="u-card__body">
+            <h3>Guirlanda de LED Fios de Luz</h3>
+            <p>10 metros de microluzes douradas para criar um cantinho ainda mais aconchegante.</p>
+            <span class="u-card__price"><s>R$ 59,90</s>R$ 34,90</span>
+            <a href="#oferta" class="btn btn--ghost btn--small">Adicionar ao Pedido</a>
+          </div>
+        </article>
+
+        <article class="u-card" data-benefit>
+          <div class="u-card__visual" aria-hidden="true">🧸</div>
+          <div class="u-card__body">
+            <h3>Manta Fleece Noite Estrelada</h3>
+            <p>Manta ultramacia com estampa celestial — combinação perfeita com a luz da Lua.</p>
+            <span class="u-card__price"><s>R$ 119,90</s>R$ 69,90</span>
+            <a href="#oferta" class="btn btn--ghost btn--small">Adicionar ao Pedido</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#inicio" class="nav__logo">🌙 LUNARIS</a>
+      <p>Compra Segura | Frete Grátis | 7 Dias de Garantia</p>
+      <p>© 2026 LUNARIS. Todos os direitos reservados. Feito com 💛 no Brasil.</p>
+    </div>
   </footer>
 
-  <!-- ═══ Botão fixo mobile ═══ -->
-  <a href="#oferta" class="sticky-buy" id="stickyBuy">🌙 COMPRAR COM 50% OFF — US$ 59,99</a>
-
-  <!-- ═══ Popup de venda ═══ -->
-  <div class="sale-pop" id="salePop">
-    <span class="sale-pop__icon">🛒</span>
-    <p><strong id="salePopName">Juliana de Campinas</strong> acabou de comprar a <em id="salePopItem">Lua 3D (USB)</em></p>
+  <!-- 5. CTA fixo -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="sticky-cta__info">
+      <span class="sticky-cta__price">R$ 129,90</span>
+      <span class="sticky-cta__old"><s>R$ 249,90</s>12x de R$ 12,90 sem juros</span>
+    </div>
+    <a href="#oferta" class="btn">🌙 Garanta Sua Lua Agora</a>
   </div>
 
-  <script src="js/main.js"></script>
+  <!-- GSAP + ScrollTrigger via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hasGsap = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+
+      /* ═══════════ Fundo de estrelas (canvas leve) ═══════════ */
+      var canvas = document.getElementById('stars-canvas');
+      if (canvas) {
+        var ctx = canvas.getContext('2d');
+        var drawStars = function () {
+          var hero = canvas.parentElement;
+          canvas.width = hero.offsetWidth;
+          canvas.height = hero.offsetHeight * 1.4;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          var count = Math.min(90, Math.floor(canvas.width / 12));
+          for (var i = 0; i < count; i++) {
+            ctx.beginPath();
+            ctx.arc(
+              Math.random() * canvas.width,
+              Math.random() * canvas.height,
+              Math.random() * 1.4 + 0.3,
+              0, Math.PI * 2
+            );
+            ctx.fillStyle = 'rgba(232, 204, 106,' + (Math.random() * 0.7 + 0.15) + ')';
+            ctx.fill();
+          }
+        };
+        drawStars();
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(drawStars, 200);
+        }, { passive: true });
+      }
+
+      /* ═══════════ Cronômetro regressivo (24h, persistente) ═══════════ */
+      var DAY_MS = 24 * 60 * 60 * 1000;
+      var deadline;
+      try {
+        deadline = parseInt(localStorage.getItem('lunaris-deadline'), 10);
+        if (!deadline || deadline < Date.now()) {
+          deadline = Date.now() + DAY_MS;
+          localStorage.setItem('lunaris-deadline', deadline);
+        }
+      } catch (e) {
+        deadline = Date.now() + DAY_MS;
+      }
+
+      var elH = document.getElementById('cd-hours');
+      var elM = document.getElementById('cd-mins');
+      var elS = document.getElementById('cd-secs');
+      var elTop = document.getElementById('urgency-timer');
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        var diff = Math.max(0, deadline - Date.now());
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        elH.textContent = pad(h);
+        elM.textContent = pad(m);
+        elS.textContent = pad(s);
+        elTop.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+
+      /* ═══════════ FAQ em acordeão (animado com GSAP) ═══════════ */
+      document.querySelectorAll('.faq__item').forEach(function (item) {
+        var btn = item.querySelector('.faq__question');
+        var answer = item.querySelector('.faq__answer');
+        btn.addEventListener('click', function () {
+          var isOpen = item.classList.contains('open');
+
+          // fecha os outros itens abertos
+          document.querySelectorAll('.faq__item.open').forEach(function (other) {
+            if (other === item) return;
+            other.classList.remove('open');
+            other.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+            var otherAnswer = other.querySelector('.faq__answer');
+            if (hasGsap && !prefersReducedMotion) {
+              gsap.to(otherAnswer, { height: 0, duration: 0.35, ease: 'power2.inOut' });
+            } else {
+              otherAnswer.style.height = '0px';
+            }
+          });
+
+          item.classList.toggle('open', !isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
+          if (hasGsap && !prefersReducedMotion) {
+            gsap.to(answer, {
+              height: isOpen ? 0 : answer.scrollHeight,
+              duration: 0.4,
+              ease: 'power3.out'
+            });
+          } else {
+            answer.style.height = isOpen ? '0px' : 'auto';
+          }
+        });
+      });
+
+      /* ═══════════ Newsletter ═══════════ */
+      var form = document.getElementById('newsletter-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = form.querySelector('input[type="email"]');
+        if (!input.value || !/^\S+@\S+\.\S+$/.test(input.value)) {
+          input.focus();
+          input.style.borderColor = 'var(--red)';
+          return;
+        }
+        form.style.display = 'none';
+        var success = document.getElementById('newsletter-success');
+        success.style.display = 'block';
+        if (hasGsap && !prefersReducedMotion) {
+          gsap.from(success, { y: 12, opacity: 0, duration: 0.5, ease: 'power3.out' });
+        }
+      });
+
+      /* ═══════════ Animações GSAP + ScrollTrigger ═══════════ */
+      if (!hasGsap) return; // fallback: página funciona 100% sem animações
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (prefersReducedMotion) {
+        // respeita quem prefere movimento reduzido: só a barra de progresso, sem deslocamentos
+        gsap.to('#progress-bar', {
+          scaleX: 1,
+          ease: 'none',
+          scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 }
+        });
+        return;
+      }
+
+      /* Estados iniciais via gsap.set() — previne FOUC/layout shift */
+      gsap.set('[data-hero]', { opacity: 0, y: 34 });
+      gsap.set('[data-hero-img]', { opacity: 0, scale: 0.94 });
+      gsap.set('[data-reveal]', { opacity: 0, y: 40 });
+      gsap.set('[data-benefit]', { opacity: 0, y: 60 });
+      gsap.set('[data-stat]', { opacity: 0, y: 30 });
+      gsap.set('[data-testimonial]', { opacity: 0, x: 80 });
+
+      /* 1. HERO — timeline de entrada ao carregar */
+      var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      heroTl
+        .to('[data-hero]', { opacity: 1, y: 0, duration: 0.9, stagger: 0.14 })
+        .to('[data-hero-img]', { opacity: 1, scale: 1, duration: 1.1 }, '-=0.8');
+
+      /* 7. Barra de progresso do scroll */
+      gsap.to('#progress-bar', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: 0.3 }
+      });
+
+      /* 6. Parallax — fundo se move mais devagar que o primeiro plano (scrub: true) */
+      gsap.to('#stars-canvas', {
+        yPercent: 22,
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+      gsap.to('[data-parallax]', {
+        yPercent: 35,
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+      gsap.to('[data-parallax-slow]', {
+        y: -160,
+        ease: 'none',
+        scrollTrigger: { trigger: '.benefits', start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+
+      /* Revelações genéricas (títulos, selos, showcase, FAQ, oferta…) */
+      gsap.utils.toArray('[data-reveal]').forEach(function (el) {
+        gsap.to(el, {
+          opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        });
+      });
+
+      /* 2. Cards de benefícios — deslizam de baixo pra cima, escalonados */
+      gsap.utils.toArray('.benefits__grid, .upsell__grid').forEach(function (grid) {
+        gsap.to(grid.querySelectorAll('[data-benefit]'), {
+          opacity: 1, y: 0, duration: 0.85, ease: 'power3.out', stagger: 0.2,
+          scrollTrigger: { trigger: grid, start: 'top 82%', toggleActions: 'play none none none' }
+        });
+      });
+
+      /* 3. Números — contam de 0 até o valor final ao entrar na tela */
+      gsap.to('[data-stat]', {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: 0.15,
+        scrollTrigger: { trigger: '.stats__grid', start: 'top 85%', toggleActions: 'play none none none' }
+      });
+      document.querySelectorAll('.counter').forEach(function (el) {
+        var target = parseFloat(el.dataset.target);
+        var decimals = parseInt(el.dataset.decimals || '0', 10);
+        var proxy = { val: 0 };
+        gsap.to(proxy, {
+          val: target,
+          duration: 2,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+          onUpdate: function () {
+            el.textContent = decimals
+              ? proxy.val.toFixed(decimals).replace('.', ',')
+              : Math.round(proxy.val).toLocaleString('pt-BR');
+          }
+        });
+      });
+
+      /* 4. Depoimentos — deslizam horizontalmente com tempo escalonado */
+      gsap.to('[data-testimonial]', {
+        opacity: 1, x: 0, duration: 0.9, ease: 'power3.out', stagger: 0.2,
+        scrollTrigger: { trigger: '.testimonials__grid', start: 'top 84%', toggleActions: 'play none none none' }
+      });
+
+      /* Barra de estoque na seção de oferta */
+      gsap.fromTo('#stock-fill', { width: '100%' }, {
+        width: '18%', duration: 1.6, ease: 'power3.inOut',
+        scrollTrigger: { trigger: '.stock-meter', start: 'top 90%', toggleActions: 'play none none none' }
+      });
+
+      /* 5. CTA fixo — fade in/out conforme a posição do scroll */
+      var stickyCta = document.getElementById('sticky-cta');
+      var stickyVisible = false;
+      function showSticky(show) {
+        if (show === stickyVisible) return;
+        stickyVisible = show;
+        gsap.to(stickyCta, {
+          opacity: show ? 1 : 0,
+          y: show ? 0 : 24,
+          duration: 0.45,
+          ease: 'power3.out',
+          onStart: function () { if (show) stickyCta.style.visibility = 'visible'; },
+          onComplete: function () { if (!show) stickyCta.style.visibility = 'hidden'; }
+        });
+      }
+      gsap.set(stickyCta, { y: 24 });
+
+      // aparece depois do hero…
+      ScrollTrigger.create({
+        trigger: '.hero',
+        start: 'bottom 60%',
+        onEnter: function () { showSticky(true); },
+        onLeaveBack: function () { showSticky(false); }
+      });
+      // …e some enquanto a seção de oferta (que já tem CTA) está visível
+      ScrollTrigger.create({
+        trigger: '.offer',
+        start: 'top 75%',
+        end: 'bottom 40%',
+        onEnter: function () { showSticky(false); },
+        onLeave: function () { showSticky(true); },
+        onEnterBack: function () { showSticky(false); },
+        onLeaveBack: function () { showSticky(true); }
+      });
+
+      /* Recalcula posições após o carregamento completo (imagens lazy) */
+      window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+    })();
+  </script>
 </body>
 </html>
