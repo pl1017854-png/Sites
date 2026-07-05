@@ -16,6 +16,26 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => io.observe(el));
 
+/* ─── Galeria de fotos ─── */
+const galleryMain = document.getElementById('galleryMain');
+document.querySelectorAll('.gallery__thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    document.querySelectorAll('.gallery__thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+    galleryMain.src = thumb.dataset.img;
+  });
+});
+
+/* ─── Seletor de versão (À Bateria / USB) ─── */
+let selectedVariant = 'À Bateria';
+document.querySelectorAll('.variant').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.variant').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedVariant = btn.dataset.variant;
+  });
+});
+
 /* ─── Contadores animados ─── */
 const counters = document.querySelectorAll('[data-count]');
 const counterIO = new IntersectionObserver(entries => {
@@ -25,6 +45,7 @@ const counterIO = new IntersectionObserver(entries => {
     const target = parseFloat(el.dataset.count);
     const decimals = parseInt(el.dataset.decimals || 0, 10);
     const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
     const duration = 1600;
     const start = performance.now();
 
@@ -32,7 +53,7 @@ const counterIO = new IntersectionObserver(entries => {
       const p = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
       const value = target * eased;
-      el.textContent = value.toLocaleString('pt-BR', {
+      el.innerHTML = prefix + value.toLocaleString('pt-BR', {
         minimumFractionDigits: decimals,
         maximumFractionDigits: decimals
       }) + suffix;
@@ -44,7 +65,7 @@ const counterIO = new IntersectionObserver(entries => {
 }, { threshold: 0.4 });
 counters.forEach(el => counterIO.observe(el));
 
-/* ─── Contagem regressiva (reinicia a cada visita, persiste na sessão) ─── */
+/* ─── Contagem regressiva (persiste na sessão) ─── */
 const HOURS = 5, KEY = 'lunaris_deadline';
 let deadline = parseInt(sessionStorage.getItem(KEY), 10);
 if (!deadline || deadline < Date.now()) {
@@ -72,23 +93,27 @@ function updateTimer() {
 updateTimer();
 setInterval(updateTimer, 1000);
 
-/* ─── Estoque decrescente ─── */
-const stockEls = [document.getElementById('stockCount'), document.getElementById('stockCount2')].filter(Boolean);
-let stock = parseInt(sessionStorage.getItem('lunaris_stock'), 10) || 17;
+/* ─── Estoque decrescente (lote de 20) ─── */
+const TOTAL_STOCK = 20;
+const stockEls = ['stockCount', 'stockCount2', 'stockCount3']
+  .map(id => document.getElementById(id)).filter(Boolean);
+const stockBar = document.getElementById('stockBar');
+let stock = parseInt(sessionStorage.getItem('lunaris_stock'), 10) || TOTAL_STOCK;
 
 function renderStock() {
   stockEls.forEach(el => { el.textContent = stock; });
+  if (stockBar) stockBar.style.width = (stock / TOTAL_STOCK * 100) + '%';
 }
 function dropStock() {
-  if (stock > 6) {
+  if (stock > 7) {
     stock--;
     sessionStorage.setItem('lunaris_stock', stock);
     renderStock();
   }
-  setTimeout(dropStock, 45000 + Math.random() * 60000);
+  setTimeout(dropStock, 60000 + Math.random() * 90000);
 }
 renderStock();
-setTimeout(dropStock, 30000);
+setTimeout(dropStock, 40000);
 
 /* ─── Popup de vendas recentes ─── */
 const pop = document.getElementById('salePop');
@@ -101,7 +126,7 @@ const buyers = [
   ['Rodrigo', 'Brasília, DF'], ['Patrícia', 'Niterói, RJ'], ['Gustavo', 'Londrina, PR'],
   ['Amanda', 'São Luís, MA'], ['Vinícius', 'Uberlândia, MG'], ['Isabela', 'Santos, SP']
 ];
-const items = ['Umidificador Lua 3D', 'Kit Casal (2 un.)', 'Kit Família (3 un.)'];
+const items = ['Lua 3D (À Bateria)', 'Lua 3D (USB)', 'Luminária Lua 3D 880ML'];
 
 function showSalePop() {
   const [name, city] = buyers[Math.floor(Math.random() * buyers.length)];
@@ -117,8 +142,10 @@ setTimeout(showSalePop, 8000);
 document.querySelectorAll('.buy-btn').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
-    // Troque pelo link do seu checkout (Shopify, Yampi, CartPanda, etc.)
-    alert('🌙 Obrigado pelo interesse! Conecte aqui o link do seu checkout (Shopify, Yampi, CartPanda...).');
+    // Troque pelo link do seu checkout Stripe/Shopify.
+    // Dica: use a variável selectedVariant para direcionar à variação certa:
+    // window.location.href = 'https://buy.stripe.com/SEU_LINK?variant=' + encodeURIComponent(selectedVariant);
+    alert('🌙 Versão escolhida: ' + selectedVariant + '\n\nConecte aqui o link do seu checkout (Stripe, Shopify...).');
   });
 });
 
