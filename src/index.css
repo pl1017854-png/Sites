@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* âncoras não ficam escondidas sob a navbar sticky */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+body {
+  @apply bg-night-950 text-neutral-200 font-sans antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  @apply bg-moon-300/30 text-moon-100;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-night-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-night-700 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-moon-500/40;
+}
