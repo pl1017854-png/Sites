@@ -3,217 +3,367 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COSMOS — Uma Jornada pelo Universo</title>
-  <meta name="description" content="Uma experiência imersiva pelo universo, com animações de scroll e efeitos especiais." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='34' fill='%237c6cff'/%3E%3Cellipse cx='50' cy='50' rx='48' ry='14' fill='none' stroke='%234dd6ff' stroke-width='5' transform='rotate(-18 50 50)'/%3E%3C/svg%3E" />
+  <title>LUNARIS — Umidificador Lua 3D | Umidifica, Aromatiza e Ilumina</title>
+  <meta name="description" content="O Umidificador Lua 3D que transforma seu quarto: ar mais saudável, aromaterapia relaxante e luz ambiente. Frete grátis para todo o Brasil + 7 dias de garantia." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23f5d9a8'/%3E%3Ccircle cx='38' cy='40' r='8' fill='%23e0bd85'/%3E%3Ccircle cx='60' cy='62' r='6' fill='%23e0bd85'/%3E%3Ccircle cx='64' cy='34' r='4' fill='%23e0bd85'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ═══ Preloader ═══ -->
-  <div class="preloader" id="preloader">
-    <div class="preloader__orbit">
-      <div class="preloader__planet"></div>
-      <div class="preloader__moon"></div>
+  <!-- ═══ Barra de anúncio ═══ -->
+  <div class="topbar">
+    <div class="topbar__track">
+      <span>🚚 FRETE GRÁTIS PARA TODO O BRASIL</span><i>✦</i>
+      <span>🔥 ÚLTIMAS UNIDADES COM 50% OFF</span><i>✦</i>
+      <span>🛡️ 7 DIAS DE GARANTIA OU SEU DINHEIRO DE VOLTA</span><i>✦</i>
+      <span>🚚 FRETE GRÁTIS PARA TODO O BRASIL</span><i>✦</i>
+      <span>🔥 ÚLTIMAS UNIDADES COM 50% OFF</span><i>✦</i>
+      <span>🛡️ 7 DIAS DE GARANTIA OU SEU DINHEIRO DE VOLTA</span><i>✦</i>
     </div>
-    <p class="preloader__text">Iniciando jornada<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
   </div>
-
-  <!-- ═══ Efeitos globais ═══ -->
-  <div class="scroll-progress" id="scrollProgress"></div>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <canvas id="starfield"></canvas>
 
   <!-- ═══ Navegação ═══ -->
   <nav class="nav" id="nav">
-    <a href="#hero" class="nav__logo" data-magnetic>✦ COSMOS</a>
+    <a href="#inicio" class="nav__logo">🌙 LUNARIS</a>
     <ul class="nav__links">
-      <li><a href="#sobre" data-magnetic>Origem</a></li>
-      <li><a href="#planetas" data-magnetic>Planetas</a></li>
-      <li><a href="#jornada" data-magnetic>Jornada</a></li>
-      <li><a href="#contato" data-magnetic class="nav__cta">Embarcar</a></li>
+      <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
+      <li><a href="#faq">Dúvidas</a></li>
     </ul>
+    <a href="#oferta" class="btn btn--small nav__buy">Comprar agora</a>
   </nav>
 
   <!-- ═══ Hero ═══ -->
-  <header class="hero" id="hero">
-    <div class="hero__content" data-parallax-depth="0.3">
-      <p class="hero__eyebrow reveal">EXPERIÊNCIA IMERSIVA</p>
-      <h1 class="hero__title" id="heroTitle">COSMOS</h1>
-      <p class="hero__subtitle reveal" data-delay="600">
-        Role para atravessar <span class="glow-text">13,8 bilhões de anos</span> de história cósmica
-      </p>
+  <header class="hero" id="inicio">
+    <div class="hero__stars" aria-hidden="true"></div>
+    <div class="hero__grid container">
+      <div class="hero__copy">
+        <p class="hero__eyebrow reveal">⭐ 4,9/5 — mais de 12.000 clientes satisfeitos</p>
+        <h1 class="hero__title reveal">Transforme seu quarto em um <em>refúgio de paz</em></h1>
+        <p class="hero__sub reveal">O <strong>Umidificador Lua 3D</strong> une 3 produtos em 1: umidifica o ar,
+          espalha o aroma do seu óleo essencial favorito e ilumina o ambiente com um brilho lunar relaxante.</p>
+        <ul class="hero__bullets reveal">
+          <li>✅ Durma melhor e acorde sem nariz ressecado</li>
+          <li>✅ Silencioso: menos de 35dB, ideal para o quarto</li>
+          <li>✅ Bateria recarregável USB — 8 a 12h de uso</li>
+        </ul>
+        <div class="hero__price reveal">
+          <span class="price-old">De <s>R$ 199,90</s></span>
+          <span class="price-now">Por R$ 99,90</span>
+          <span class="price-installments">ou 3x de R$ 33,30 sem juros</span>
+        </div>
+        <div class="hero__cta reveal">
+          <a href="#oferta" class="btn btn--big pulse">QUERO O MEU COM 50% OFF →</a>
+          <p class="hero__stock">⚠️ Restam <strong id="stockCount">17</strong> unidades no estoque promocional</p>
+        </div>
+        <div class="hero__trust reveal">
+          <span>🔒 Compra segura</span>
+          <span>🚚 Frete grátis</span>
+          <span>🛡️ 7 dias de garantia</span>
+        </div>
+      </div>
+
+      <div class="hero__product reveal">
+        <div class="moon-scene">
+          <div class="moon">
+            <span class="crater c1"></span><span class="crater c2"></span>
+            <span class="crater c3"></span><span class="crater c4"></span>
+            <span class="crater c5"></span>
+          </div>
+          <div class="moon-base"></div>
+          <span class="mist m1"></span>
+          <span class="mist m2"></span>
+          <span class="mist m3"></span>
+          <div class="hero__badge">-50%<small>HOJE</small></div>
+        </div>
+      </div>
     </div>
-    <div class="hero__scroll-hint">
-      <div class="mouse"><div class="mouse__wheel"></div></div>
-      <span>Role para explorar</span>
-    </div>
-    <div class="hero__gradient"></div>
   </header>
 
-  <main>
-    <!-- ═══ Origem / texto reveal ═══ -->
-    <section class="section origin" id="sobre">
-      <div class="container">
-        <h2 class="split-lines big-statement">
-          <span class="line">No início, havia apenas</span>
-          <span class="line"><em class="glow-text">um ponto infinito</em> de energia.</span>
-          <span class="line">Então, tudo explodiu em existência.</span>
-        </h2>
-        <div class="origin__grid">
-          <div class="origin__card reveal" data-delay="0">
-            <span class="origin__num">01</span>
-            <h3>Big Bang</h3>
-            <p>Em uma fração de segundo, o universo se expandiu de algo menor que um átomo para algo maior que uma galáxia.</p>
-          </div>
-          <div class="origin__card reveal" data-delay="150">
-            <span class="origin__num">02</span>
-            <h3>Primeiras Estrelas</h3>
-            <p>Gigantes azuis nasceram das nuvens primordiais de hidrogênio, forjando os primeiros elementos pesados.</p>
-          </div>
-          <div class="origin__card reveal" data-delay="300">
-            <span class="origin__num">03</span>
-            <h3>Galáxias</h3>
-            <p>A gravidade teceu bilhões de estrelas em espirais majestosas que dançam pelo vazio há eras.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Contadores ═══ -->
-    <section class="section stats">
-      <div class="stats__glow" data-parallax-depth="0.15"></div>
-      <div class="container stats__grid">
-        <div class="stat reveal">
-          <span class="stat__value" data-count="13.8" data-decimals="1">0</span>
-          <span class="stat__unit">bilhões de anos</span>
-          <span class="stat__label">Idade do universo</span>
-        </div>
-        <div class="stat reveal" data-delay="150">
-          <span class="stat__value" data-count="200" data-suffix="+">0</span>
-          <span class="stat__unit">bilhões</span>
-          <span class="stat__label">Galáxias observáveis</span>
-        </div>
-        <div class="stat reveal" data-delay="300">
-          <span class="stat__value" data-count="299792">0</span>
-          <span class="stat__unit">km/s</span>
-          <span class="stat__label">Velocidade da luz</span>
-        </div>
-        <div class="stat reveal" data-delay="450">
-          <span class="stat__value" data-count="93" data-suffix=" bi">0</span>
-          <span class="stat__unit">anos-luz</span>
-          <span class="stat__label">Diâmetro observável</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Planetas / cards 3D ═══ -->
-    <section class="section planets" id="planetas">
-      <div class="container">
-        <p class="section__eyebrow reveal">SISTEMA SOLAR</p>
-        <h2 class="section__title split-chars" id="planetsTitle">Vizinhos Cósmicos</h2>
-        <div class="planets__grid">
-          <article class="planet-card reveal" data-tilt data-delay="0">
-            <div class="planet-card__sphere planet-card__sphere--mercury"></div>
-            <h3>Mercúrio</h3>
-            <p>O mensageiro veloz. Um ano aqui dura apenas 88 dias terrestres.</p>
-            <span class="planet-card__tag">57,9 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="120">
-            <div class="planet-card__sphere planet-card__sphere--venus"></div>
-            <h3>Vênus</h3>
-            <p>A estrela da manhã. Sua atmosfera densa esconde um mundo de 465&nbsp;°C.</p>
-            <span class="planet-card__tag">108,2 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="240">
-            <div class="planet-card__sphere planet-card__sphere--earth"></div>
-            <h3>Terra</h3>
-            <p>O ponto azul-claro. O único lugar conhecido onde a vida floresce.</p>
-            <span class="planet-card__tag">149,6 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="360">
-            <div class="planet-card__sphere planet-card__sphere--mars"></div>
-            <h3>Marte</h3>
-            <p>O planeta vermelho. Nosso próximo destino na exploração espacial.</p>
-            <span class="planet-card__tag">227,9 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="480">
-            <div class="planet-card__sphere planet-card__sphere--jupiter"></div>
-            <h3>Júpiter</h3>
-            <p>O gigante guardião. Sua gravidade protege os planetas internos.</p>
-            <span class="planet-card__tag">778,5 mi km do Sol</span>
-          </article>
-          <article class="planet-card reveal" data-tilt data-delay="600">
-            <div class="planet-card__sphere planet-card__sphere--saturn"><span class="ring"></span></div>
-            <h3>Saturno</h3>
-            <p>O senhor dos anéis. Bilhões de fragmentos de gelo em órbita perfeita.</p>
-            <span class="planet-card__tag">1,43 bi km do Sol</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Scroll horizontal / jornada ═══ -->
-    <section class="journey" id="jornada">
-      <div class="journey__sticky">
-        <div class="journey__track" id="journeyTrack">
-          <div class="journey__panel">
-            <span class="journey__year">Ano 0</span>
-            <h3>O Grande Início</h3>
-            <p>Toda a matéria, energia, espaço e tempo emergem de uma singularidade.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">+380 mil anos</span>
-            <h3>A Primeira Luz</h3>
-            <p>O universo esfria o suficiente para a luz viajar livremente — a radiação cósmica de fundo.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">+200 mi anos</span>
-            <h3>Amanhecer Estelar</h3>
-            <p>As primeiras estrelas acendem, encerrando a era das trevas cósmicas.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">+9,2 bi anos</span>
-            <h3>Nasce o Sol</h3>
-            <p>Nossa estrela se forma de uma nuvem de gás e poeira de gerações estelares anteriores.</p>
-          </div>
-          <div class="journey__panel">
-            <span class="journey__year">Hoje</span>
-            <h3>Você está aqui</h3>
-            <p>Átomos forjados em estrelas, contemplando as próprias origens. Nós somos o universo se conhecendo.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Parallax final / CTA ═══ -->
-    <section class="finale" id="contato">
-      <div class="finale__planet" data-parallax-depth="0.25"></div>
-      <div class="finale__content">
-        <h2 class="split-lines big-statement">
-          <span class="line">Somos poeira de estrelas</span>
-          <span class="line">olhando para <em class="glow-text">casa</em>.</span>
-        </h2>
-        <a href="#hero" class="btn-launch reveal" data-magnetic id="btnTop">
-          <span>Recomeçar a jornada</span> 🚀
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="footer__marquee" aria-hidden="true">
-      <div class="footer__marquee-track">
-        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
-        <span>EXPLORE ✦ SONHE ✦ DESCUBRA ✦ EXPLORE ✦ SONHE ✦ DESCUBRA ✦ </span>
+  <!-- ═══ Contagem regressiva ═══ -->
+  <section class="countdown" id="oferta-timer">
+    <div class="container countdown__inner">
+      <p>🔥 A promoção de <strong>50% OFF + frete grátis</strong> termina em:</p>
+      <div class="countdown__timer" id="timer">
+        <div class="t-box"><span id="tHours">05</span><small>horas</small></div>
+        <div class="t-sep">:</div>
+        <div class="t-box"><span id="tMins">42</span><small>min</small></div>
+        <div class="t-sep">:</div>
+        <div class="t-box"><span id="tSecs">18</span><small>seg</small></div>
       </div>
     </div>
-    <p>COSMOS — feito com vanilla HTML, CSS e JS. Sem bibliotecas, só física e imaginação.</p>
+  </section>
+
+  <!-- ═══ Benefícios ═══ -->
+  <section class="section benefits" id="beneficios">
+    <div class="container">
+      <p class="section__eyebrow reveal">POR QUE TODO MUNDO QUER UM</p>
+      <h2 class="section__title reveal">3 produtos em 1, por um só preço</h2>
+      <div class="benefits__grid">
+        <article class="benefit-card reveal">
+          <div class="benefit-card__icon">💧</div>
+          <h3>Umidificador potente</h3>
+          <p>Reservatório de 880ml que umidifica o ar por até 12 horas. Chega de acordar com garganta seca e nariz entupido no tempo seco.</p>
+        </article>
+        <article class="benefit-card reveal" data-delay="120">
+          <div class="benefit-card__icon">🌸</div>
+          <h3>Aromaterapia relaxante</h3>
+          <p>Pingue algumas gotas do seu óleo essencial favorito e transforme o ambiente. Lavanda para dormir, eucalipto para respirar melhor.</p>
+        </article>
+        <article class="benefit-card reveal" data-delay="240">
+          <div class="benefit-card__icon">🌙</div>
+          <h3>Luminária Lua 3D</h3>
+          <p>Réplica realista da superfície lunar com luz quente ajustável. A luz noturna perfeita para o quarto do casal ou das crianças.</p>
+        </article>
+        <article class="benefit-card reveal">
+          <div class="benefit-card__icon">🔇</div>
+          <h3>Ultra silencioso</h3>
+          <p>Menos de 35dB — mais silencioso que um sussurro. Você nem percebe que está ligado, só sente o ar mais leve.</p>
+        </article>
+        <article class="benefit-card reveal" data-delay="120">
+          <div class="benefit-card__icon">🔋</div>
+          <h3>Sem fio, leve para onde quiser</h3>
+          <p>Bateria recarregável via USB com 8 a 12h de autonomia. Use no quarto, escritório, ou leve na viagem.</p>
+        </article>
+        <article class="benefit-card reveal" data-delay="240">
+          <div class="benefit-card__icon">🛡️</div>
+          <h3>Desligamento automático</h3>
+          <p>Acabou a água? Ele desliga sozinho. Segurança total para usar a noite inteira sem preocupação.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Prova social / números ═══ -->
+  <section class="stats">
+    <div class="container stats__grid">
+      <div class="stat reveal"><span class="stat__value" data-count="12480">0</span><span class="stat__label">clientes satisfeitos</span></div>
+      <div class="stat reveal" data-delay="120"><span class="stat__value" data-count="4.9" data-decimals="1">0</span><span class="stat__label">nota média (2.347 avaliações)</span></div>
+      <div class="stat reveal" data-delay="240"><span class="stat__value" data-count="98" data-suffix="%">0</span><span class="stat__label">recomendam para amigos</span></div>
+      <div class="stat reveal" data-delay="360"><span class="stat__value" data-count="7" data-suffix=" dias">0</span><span class="stat__label">de garantia incondicional</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ Comparação ═══ -->
+  <section class="section compare">
+    <div class="container">
+      <h2 class="section__title reveal">LUNARIS vs. umidificadores comuns</h2>
+      <div class="compare__table reveal">
+        <div class="compare__row compare__row--head">
+          <div></div><div class="compare__us">🌙 LUNARIS</div><div>Comuns</div>
+        </div>
+        <div class="compare__row"><div>Umidifica + aromatiza + ilumina</div><div class="yes">✔</div><div class="no">✘</div></div>
+        <div class="compare__row"><div>Funciona sem fio (bateria)</div><div class="yes">✔</div><div class="no">✘</div></div>
+        <div class="compare__row"><div>Silencioso (&lt; 35dB)</div><div class="yes">✔</div><div class="no">✘</div></div>
+        <div class="compare__row"><div>Desligamento automático</div><div class="yes">✔</div><div class="no">✘</div></div>
+        <div class="compare__row"><div>Design decorativo Lua 3D</div><div class="yes">✔</div><div class="no">✘</div></div>
+        <div class="compare__row"><div>Frete grátis + 7 dias de garantia</div><div class="yes">✔</div><div class="no">✘</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Oferta / kits ═══ -->
+  <section class="section offer" id="oferta">
+    <div class="container">
+      <p class="section__eyebrow reveal">OFERTA POR TEMPO LIMITADO</p>
+      <h2 class="section__title reveal">Escolha seu kit e economize</h2>
+      <div class="offer__grid">
+        <article class="offer-card reveal">
+          <h3>1 unidade</h3>
+          <p class="offer-card__tag">Para experimentar</p>
+          <div class="offer-card__moon small"></div>
+          <p class="offer-card__old"><s>R$ 199,90</s></p>
+          <p class="offer-card__price">R$ 99,90</p>
+          <p class="offer-card__inst">ou 3x de R$ 33,30</p>
+          <a href="#" class="btn btn--outline buy-btn">Comprar 1 unidade</a>
+          <p class="offer-card__ship">🚚 Frete grátis</p>
+        </article>
+
+        <article class="offer-card offer-card--best reveal" data-delay="120">
+          <span class="offer-card__ribbon">🔥 MAIS VENDIDO</span>
+          <h3>Kit Casal — 2 unidades</h3>
+          <p class="offer-card__tag">Quarto + escritório</p>
+          <div class="offer-card__moon small double"></div>
+          <p class="offer-card__old"><s>R$ 399,80</s></p>
+          <p class="offer-card__price">R$ 169,90</p>
+          <p class="offer-card__inst">ou 6x de R$ 28,31 <strong>(R$ 84,95 cada)</strong></p>
+          <a href="#" class="btn btn--big buy-btn pulse">QUERO O KIT CASAL →</a>
+          <p class="offer-card__ship">🚚 Frete grátis + brinde surpresa 🎁</p>
+        </article>
+
+        <article class="offer-card reveal" data-delay="240">
+          <h3>Kit Família — 3 unidades</h3>
+          <p class="offer-card__tag">Maior economia</p>
+          <div class="offer-card__moon small triple"></div>
+          <p class="offer-card__old"><s>R$ 599,70</s></p>
+          <p class="offer-card__price">R$ 229,90</p>
+          <p class="offer-card__inst">ou 6x de R$ 38,31 <strong>(R$ 76,63 cada)</strong></p>
+          <a href="#" class="btn btn--outline buy-btn">Comprar Kit Família</a>
+          <p class="offer-card__ship">🚚 Frete grátis + brinde surpresa 🎁</p>
+        </article>
+      </div>
+      <div class="offer__payments reveal">
+        <span>Formas de pagamento:</span>
+        <span class="pay-chip">💳 Cartão em até 6x</span>
+        <span class="pay-chip">⚡ Pix (5% off extra)</span>
+        <span class="pay-chip">📄 Boleto</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Avaliações ═══ -->
+  <section class="section reviews" id="avaliacoes">
+    <div class="container">
+      <p class="section__eyebrow reveal">QUEM COMPROU, AMOU</p>
+      <h2 class="section__title reveal">⭐ 4,9/5 em 2.347 avaliações</h2>
+      <div class="reviews__grid">
+        <article class="review reveal">
+          <div class="review__head">
+            <span class="review__avatar" style="--av:#f0a3a3">M</span>
+            <div><strong>Mariana S.</strong><small>São Paulo, SP ✔ Compra verificada</small></div>
+          </div>
+          <div class="review__stars">★★★★★</div>
+          <p>"Comprei para o quarto do meu bebê e foi a melhor coisa! Ele dormia mal com o ar seco, agora dorme a noite toda. A luzinha é linda demais."</p>
+        </article>
+        <article class="review reveal" data-delay="120">
+          <div class="review__head">
+            <span class="review__avatar" style="--av:#9ecba8">R</span>
+            <div><strong>Rafael T.</strong><small>Belo Horizonte, MG ✔ Compra verificada</small></div>
+          </div>
+          <div class="review__stars">★★★★★</div>
+          <p>"Achei que era só mais uma luminária bonitinha, mas o umidificador é potente de verdade. Uso com óleo de lavanda e durmo muito melhor."</p>
+        </article>
+        <article class="review reveal" data-delay="240">
+          <div class="review__head">
+            <span class="review__avatar" style="--av:#a3b6f0">C</span>
+            <div><strong>Camila R.</strong><small>Curitiba, PR ✔ Compra verificada</small></div>
+          </div>
+          <div class="review__stars">★★★★★</div>
+          <p>"Chegou em 9 dias, super bem embalado. Comprei o kit casal e dei uma de presente pra minha mãe — ela ficou apaixonada. Recomendo muito!"</p>
+        </article>
+        <article class="review reveal">
+          <div class="review__head">
+            <span class="review__avatar" style="--av:#e8c78f">J</span>
+            <div><strong>João Pedro M.</strong><small>Recife, PE ✔ Compra verificada</small></div>
+          </div>
+          <div class="review__stars">★★★★★</div>
+          <p>"Silencioso mesmo, não faz barulho nenhum. A bateria dura a noite inteira. Melhor custo-benefício que já vi nesse tipo de produto."</p>
+        </article>
+        <article class="review reveal" data-delay="120">
+          <div class="review__head">
+            <span class="review__avatar" style="--av:#d3a3f0">A</span>
+            <div><strong>Ana Clara F.</strong><small>Rio de Janeiro, RJ ✔ Compra verificada</small></div>
+          </div>
+          <div class="review__stars">★★★★☆</div>
+          <p>"Produto lindo e funcional. Só demorou um pouquinho mais que o previsto pra chegar, mas o suporte me atendeu super bem. Valeu a pena!"</p>
+        </article>
+        <article class="review reveal" data-delay="240">
+          <div class="review__head">
+            <span class="review__avatar" style="--av:#8fd8e8">L</span>
+            <div><strong>Lucas V.</strong><small>Porto Alegre, RS ✔ Compra verificada</small></div>
+          </div>
+          <div class="review__stars">★★★★★</div>
+          <p>"Comprei pra decorar meu setup e virou meu item favorito. Todo mundo que vê pergunta onde comprei. Já indiquei pra 5 amigos."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Garantia ═══ -->
+  <section class="section guarantee">
+    <div class="container guarantee__inner reveal">
+      <div class="guarantee__seal">🛡️<span>7 DIAS</span></div>
+      <div>
+        <h2>Risco zero: garantia incondicional de 7 dias</h2>
+        <p>Receba, teste e use o seu Umidificador Lua 3D. Se por qualquer motivo você não amar,
+          devolvemos <strong>100% do seu dinheiro</strong>, sem perguntas e sem burocracia.
+          Você não tem nada a perder — e noites de sono muito melhores a ganhar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="section faq" id="faq">
+    <div class="container container--narrow">
+      <h2 class="section__title reveal">Perguntas frequentes</h2>
+      <details class="faq__item reveal">
+        <summary>Quanto tempo demora para chegar? <span>+</span></summary>
+        <p>Enviamos em até 24h úteis após a confirmação do pagamento. O prazo médio de entrega é de 7 a 15 dias úteis, com código de rastreio enviado por e-mail e WhatsApp.</p>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Posso usar óleos essenciais? <span>+</span></summary>
+        <p>Sim! Basta pingar 2 a 3 gotas do seu óleo essencial favorito na água. Lavanda, eucalipto, capim-limão — o aroma se espalha junto com a névoa.</p>
+      </details>
+      <details class="faq__item reveal">
+        <summary>É silencioso o suficiente para dormir? <span>+</span></summary>
+        <p>Totalmente. Ele opera abaixo de 35dB — mais silencioso que um sussurro. Milhares de clientes usam a noite inteira no quarto, inclusive em quartos de bebê.</p>
+      </details>
+      <details class="faq__item reveal">
+        <summary>Quanto tempo dura a bateria? <span>+</span></summary>
+        <p>De 8 a 12 horas de uso contínuo, dependendo do modo. A recarga é feita por cabo USB (incluso na caixa) e leva cerca de 3 horas.</p>
+      </details>
+      <details class="faq__item reveal">
+        <summary>E se eu não gostar do produto? <span>+</span></summary>
+        <p>Você tem 7 dias de garantia incondicional após o recebimento. Não gostou? Devolvemos 100% do valor pago, sem perguntas. Além disso, o produto tem 90 dias de garantia contra defeitos.</p>
+      </details>
+      <details class="faq__item reveal">
+        <summary>O pagamento é seguro? <span>+</span></summary>
+        <p>Sim. Todo o checkout é criptografado (SSL) e processado por plataformas certificadas. Aceitamos cartão em até 6x, Pix (com 5% de desconto extra) e boleto.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ═══ CTA final ═══ -->
+  <section class="final-cta">
+    <div class="container final-cta__inner">
+      <h2 class="reveal">Suas melhores noites de sono começam hoje 🌙</h2>
+      <p class="reveal">Aproveite os últimos <strong id="stockCount2">17</strong> aparelhos com 50% OFF e frete grátis.</p>
+      <a href="#oferta" class="btn btn--big pulse reveal">GARANTIR O MEU AGORA →</a>
+    </div>
+  </section>
+
+  <!-- ═══ Rodapé ═══ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <p class="footer__logo">🌙 LUNARIS</p>
+        <p class="footer__about">Produtos que transformam sua casa em um lugar mais aconchegante, saudável e bonito.</p>
+      </div>
+      <div>
+        <p class="footer__title">Institucional</p>
+        <a href="#">Quem somos</a>
+        <a href="#">Política de privacidade</a>
+        <a href="#">Trocas e devoluções</a>
+        <a href="#">Termos de uso</a>
+      </div>
+      <div>
+        <p class="footer__title">Atendimento</p>
+        <a href="mailto:contato@lunaris.com.br">contato@lunaris.com.br</a>
+        <a href="#">WhatsApp: (11) 99999-9999</a>
+        <a href="#">Seg. a Sex. — 9h às 18h</a>
+      </div>
+      <div>
+        <p class="footer__title">Pagamento seguro</p>
+        <div class="footer__pay">
+          <span>💳 Visa</span><span>💳 Master</span><span>⚡ Pix</span><span>📄 Boleto</span>
+        </div>
+        <p class="footer__ssl">🔒 Site protegido por SSL</p>
+      </div>
+    </div>
+    <p class="footer__legal">© 2026 LUNARIS. Todos os direitos reservados. CNPJ 00.000.000/0001-00</p>
   </footer>
+
+  <!-- ═══ Botão fixo mobile ═══ -->
+  <a href="#oferta" class="sticky-buy" id="stickyBuy">🌙 COMPRAR COM 50% OFF — R$ 99,90</a>
+
+  <!-- ═══ Popup de venda ═══ -->
+  <div class="sale-pop" id="salePop">
+    <span class="sale-pop__icon">🛒</span>
+    <p><strong id="salePopName">Juliana de Campinas</strong> acabou de comprar o <em id="salePopItem">Kit Casal</em></p>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

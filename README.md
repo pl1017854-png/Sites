@@ -1,37 +1,54 @@
-# ✦ COSMOS — Uma Jornada pelo Universo
+# 🌙 LUNARIS — Loja Dropshipping (Umidificador Lua 3D)
 
-Website imersivo de página única com animações ao scroll e efeitos especiais, construído com **HTML, CSS e JavaScript puros** — zero bibliotecas, zero frameworks.
+Landing page de alta conversão para loja de dropshipping, em português (pt-BR),
+construída com HTML, CSS e JavaScript puros — sem dependências, pronta para
+hospedar em qualquer lugar (GitHub Pages, Vercel, Netlify, Hostinger...).
 
-## Como ver
+## ✨ Elementos de conversão incluídos
+
+- **Barra de anúncio animada** — frete grátis, 50% OFF e garantia em loop
+- **Hero com preço âncora** — de R$ 199,90 por R$ 99,90 + parcelamento
+- **Contagem regressiva persistente** — cria urgência real (guarda o prazo na sessão)
+- **Estoque decrescente** — "Restam X unidades" que diminui ao vivo
+- **Kits com desconto progressivo** — 1 un. / Kit Casal / Kit Família (AOV maior)
+- **Prova social** — 6 avaliações com "compra verificada" + contadores animados
+- **Tabela comparativa** — LUNARIS vs. umidificadores comuns
+- **Selo de garantia de 7 dias** — reduz objeção de risco
+- **FAQ em acordeão** — responde as 6 objeções mais comuns
+- **Popup de vendas recentes** — "Fulana de Campinas acabou de comprar..."
+- **Botão de compra fixo no mobile** — CTA sempre visível
+- **100% responsivo** — otimizado para tráfego de anúncio (mobile-first)
+
+## 🚀 Como ver
 
 Abra o `index.html` no navegador, ou sirva localmente:
 
 ```bash
 python3 -m http.server 8000
-# depois acesse http://localhost:8000
 ```
 
-## Efeitos incluídos
+## 🔌 Conectando seu checkout
 
-| Efeito | Como funciona |
-| --- | --- |
-| 🌌 Starfield vivo | Canvas com ~300 estrelas em 3 profundidades, com parallax de mouse **e** de scroll, brilho pulsante e estrelas cadentes |
-| ✨ Título com shimmer | Gradiente animado aplicado letra a letra, com entrada em cascata |
-| 🖱️ Cursor customizado | Ponto com blend-mode `screen` + halo que segue com atraso (lerp) |
-| 🧲 Botões magnéticos | Elementos da nav são atraídos pelo cursor |
-| 📜 Reveal ao scroll | `IntersectionObserver` com atrasos escalonados, máscaras de linha (`clip-path`) e letras individuais |
-| 🔢 Contadores animados | Números sobem com easing `easeOutQuart` ao entrarem na tela |
-| 🪐 Cards 3D | Tilt em `perspective` seguindo o mouse + spotlight radial na posição do cursor |
-| ↔️ Scroll horizontal | Seção sticky que converte progresso vertical em deslocamento horizontal da linha do tempo |
-| 🌍 Parallax em camadas | Elementos com `data-parallax-depth` se movem em velocidades diferentes |
-| 📊 Barra de progresso | Gradiente no topo indicando a posição do scroll |
-| 🎞️ Marquee infinito | Letreiro contínuo no rodapé com máscara de fade nas bordas |
-| ♿ Acessível | Respeita `prefers-reduced-motion` desativando os movimentos |
+Os botões de compra estão com um placeholder. Para vender de verdade, edite
+`js/main.js` (seção *"Botões de compra"*) e troque o `alert(...)` por um
+redirecionamento para o link do seu checkout:
 
-## Estrutura
+```js
+window.location.href = 'https://seucheckout.com/produto/umidificador-lua-3d';
+```
+
+Funciona com Shopify, Yampi, CartPanda, Kiwify, ou qualquer gateway.
+
+## 📁 Estrutura
 
 ```
-index.html      — marcação e conteúdo
-css/style.css   — estilos, keyframes e estados das animações
-js/main.js      — starfield, observers, parallax, tilt e cursor
+index.html      → página completa da loja
+css/style.css   → estilos e animações
+js/main.js      → countdown, popups, contadores, estoque
 ```
+
+## 🎨 Personalizando
+
+- **Cores:** edite as variáveis em `:root` no topo do `css/style.css`
+- **Preços e textos:** tudo direto no `index.html`
+- **Nomes do popup de vendas:** lista `buyers` no `js/main.js`
