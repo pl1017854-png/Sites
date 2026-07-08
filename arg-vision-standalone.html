@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARG Vision — Websites Premium | Itu/SP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background: #000;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --gold: #E6B800;
+      --gold-bright: #FFD700;
+      --black: #000;
+      --night-soft: #1a1a1a;
+      --mist: #f0f0f0;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: rgba(240, 240, 240, 0.8);
+        text-decoration: none;
+        font-size: 0.875rem;
+        letter-spacing: 0.1em;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 2rem;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: rgba(230, 184, 0, 0.9);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 8vw, 4rem);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      text-align: center;
+      color: rgba(240, 240, 240, 0.7);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .text-gold-gradient {
+      background: linear-gradient(120deg, var(--gold) 0%, var(--gold-bright) 45%, #b8860b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-bright);
+      transform: scale(1.04);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* Section */
+    section {
+      padding: 7rem 2rem;
+    }
+
+    section > .container {
+      text-align: center;
+    }
+
+    section .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: rgba(230, 184, 0, 0.8);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    section h2 {
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+
+    section p {
+      color: rgba(240, 240, 240, 0.7);
+      font-size: 1.05rem;
+      margin: 1rem auto;
+    }
+
+    /* Cards - glassmorphism */
+    .glass-card {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(230, 184, 0, 0.4);
+    }
+
+    .glass-gold {
+      background: rgba(230, 184, 0, 0.08);
+      border: 1px solid rgba(230, 184, 0, 0.35);
+    }
+
+    /* Problem Solution */
+    #problema {
+      background: linear-gradient(to bottom, #000, rgba(26, 26, 26, 0.6), #000);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pain-card h3 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.25rem;
+      margin: 1rem 0 0.5rem;
+      color: #fff;
+    }
+
+    .pain-card p {
+      font-size: 0.95rem;
+    }
+
+    .pain-icon {
+      width: 3rem;
+      height: 3rem;
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.2), rgba(230, 184, 0, 0.05));
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    /* Pricing */
+    #preco {
+      background: linear-gradient(to bottom, #000 0%, rgba(26, 26, 26, 0.4) 50%, #000 100%);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      transform: scale(1.05);
+    }
+
+    .pricing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: #000;
+      width: fit-content;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-desc {
+      color: rgba(240, 240, 240, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-price {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .pricing-note {
+      font-size: 0.75rem;
+      color: rgba(240, 240, 240, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features {
+      flex: 1;
+      list-style: none;
+      margin: 1.5rem 0;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(240, 240, 240, 0.75);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-features li::before {
+      content: "✓";
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Portfolio */
+    #portfolio {
+      background: rgba(26, 26, 26, 0.4);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .portfolio-card .mockup {
+      background: linear-gradient(135deg, rgba(230, 184, 0, 0.1), rgba(0, 0, 0, 0.8));
+      border-radius: 1.25rem;
+      aspect-ratio: 16/10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      border: 1px solid rgba(230, 184, 0, 0.2);
+      margin-bottom: 1rem;
+    }
+
+    .mockup-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .mockup-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .mockup-category {
+      font-size: 0.75rem;
+      color: rgba(240, 240, 240, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 1rem;
+    }
+
+    .portfolio-result {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* Stats */
+    #stats {
+      padding: 3rem 2rem;
+      background: #000;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(240, 240, 240, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Testimonials */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial-card {
+      padding: 2rem;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-stars span {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .testimonial-quote {
+      color: rgba(240, 240, 240, 0.8);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1rem;
+    }
+
+    .testimonial-name {
+      font-family: 'Cinzel Decorative', serif;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: rgba(240, 240, 240, 0.5);
+      margin-top: 0.25rem;
+    }
+
+    /* CTA */
+    #cta {
+      padding: 8rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(230, 184, 0, 0.1), transparent);
+      border-radius: 50%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-content h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 2rem;
+    }
+
+    .cta-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #000;
+      padding: 3rem 2rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-brand {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-desc {
+      color: rgba(240, 240, 240, 0.6);
+      font-size: 0.9rem;
+      max-width: 300px;
+    }
+
+    .footer-contact {
+      list-style: none;
+    }
+
+    .footer-contact li {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-contact a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(240, 240, 240, 0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .footer-contact a:hover {
+      color: var(--gold);
+    }
+
+    .footer-contact span {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(240, 240, 240, 0.4);
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none !important;
+        position: fixed;
+        top: 60px;
+        left: 1rem;
+        right: 1rem;
+        background: rgba(0, 0, 0, 0.95);
+        border: 1px solid rgba(230, 184, 0, 0.2);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-links.open {
+        display: flex !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav>
+    <a href="#" class="nav-logo">ARG VISION</a>
+    <ul class="nav-links">
+      <li><a href="#problema">Problema</a></li>
+      <li><a href="#preco">Preços</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#stats">Depoimentos</a></li>
+      <li><a href="https://wa.me/5517996501551?text=Olá! Quero meu site premium com a ARG Vision." target="_blank" class="btn btn-outline">Fale conosco</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <p class="hero-eyebrow">Agência de websites premium — Itu/SP</p>
+    <h1>Seu negócio, <span class="text-gold-gradient">em outro nível.</span></h1>
+    <p class="hero-sub">Websites cinematográficos que impressionam no primeiro segundo e transformam visitantes em clientes.</p>
+    <a href="https://wa.me/5517996501551?text=Olá! Quero meu site premium com a ARG Vision." target="_blank" class="btn btn-primary">
+      💬 Quero meu site premium
+    </a>
+  </section>
+
+  <!-- Problema → Solução -->
+  <section id="problema">
+    <div class="container">
+      <p class="eyebrow">A história é sempre a mesma</p>
+      <h2>Seu negócio merece mais que um <span class="text-gold-gradient">perfil no Instagram</span></h2>
+      <p>Você trabalha duro, entrega qualidade, tem clientes fiéis — mas quem te acha na internet vê o mesmo que vê de qualquer concorrente.</p>
+      <div class="pain-grid">
+        <div class="glass-card">
+          <div class="pain-icon">📱</div>
+          <h3>Perfil no Instagram não é presença digital</h3>
+          <p>O algoritmo decide quem vê seu conteúdo. Um site é seu — funciona 24h, aparece no Google e passa autoridade de verdade.</p>
+        </div>
+        <div class="glass-card">
+          <div class="pain-icon">🔍</div>
+          <h3>Quem procura no Google não te encontra</h3>
+          <p>"Barbearia perto de mim" tem milhares de buscas por mês. Sem site, essa clientela vai direto para o concorrente.</p>
+        </div>
+        <div class="glass-card">
+          <div class="pain-icon">💰</div>
+          <h3>Primeira impressão define o preço que você cobra</h3>
+          <p>Um site premium posiciona seu negócio como referência — e cliente que percebe valor não pede desconto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preços -->
+  <section id="preco">
+    <div class="container">
+      <p class="eyebrow">Investimento</p>
+      <h2>Escolha o seu <span class="text-gold-gradient">nível</span></h2>
+      <p>Pagamento único, sem surpresas. Planos de manutenção mensal disponíveis para manter seu site sempre impecável.</p>
+      <div class="pricing-grid">
+        <div class="glass-card pricing-card">
+          <div class="pricing-name">Site Premium</div>
+          <p class="pricing-desc">Presença digital de luxo para quem está começando.</p>
+          <div class="pricing-price">R$797</div>
+          <p class="pricing-note">Pagamento único + manutenção mensal opcional</p>
+          <ul class="pricing-features">
+            <li>Página única com design premium</li>
+            <li>Botão de agendamento via WhatsApp</li>
+            <li>Otimizado para celular e Google</li>
+            <li>Entrega em até 7 dias</li>
+          </ul>
+          <a href="https://wa.me/5517996501551?text=Tenho interesse no Site Premium R$797" target="_blank" class="btn btn-outline">Começar agora</a>
+        </div>
+
+        <div class="glass-gold pricing-card featured">
+          <div class="pricing-badge">⭐ Mais escolhido</div>
+          <div class="pricing-name">Landing Page Pro</div>
+          <p class="pricing-desc">Página cinematográfica focada em conversão máxima.</p>
+          <div class="pricing-price">R$1.497</div>
+          <p class="pricing-note">Pagamento único + manutenção mensal opcional</p>
+          <ul class="pricing-features">
+            <li>Animações e efeitos 3D interativos</li>
+            <li>Estratégia de conversão completa</li>
+            <li>Copywriting persuasivo incluído</li>
+            <li>Integração com Google Maps e redes</li>
+            <li>Suporte prioritário por 30 dias</li>
+          </ul>
+          <a href="https://wa.me/5517996501551?text=Tenho interesse na Landing Page Pro R$1.497" target="_blank" class="btn btn-primary">Começar agora</a>
+        </div>
+
+        <div class="glass-card pricing-card">
+          <div class="pricing-name">Completo</div>
+          <p class="pricing-desc">O pacote definitivo: site, identidade e presença total.</p>
+          <div class="pricing-price">R$2.497</div>
+          <p class="pricing-note">Pagamento único + manutenção mensal opcional</p>
+          <ul class="pricing-features">
+            <li>Site multi-seção + landing de campanha</li>
+            <li>Identidade visual (logo e paleta)</li>
+            <li>Google Meu Negócio configurado</li>
+            <li>Fotos e conteúdo profissional</li>
+            <li>Suporte prioritário por 90 dias</li>
+          </ul>
+          <a href="https://wa.me/5517996501551?text=Tenho interesse no Pacote Completo R$2.497" target="_blank" class="btn btn-outline">Começar agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <div class="container">
+      <p class="eyebrow">Portfólio</p>
+      <h2>Trabalhos que <span class="text-gold-gradient">falam por nós</span></h2>
+    </div>
+    <div class="portfolio-grid" style="margin-top: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 2rem;">
+      <div class="portfolio-card">
+        <div class="glass-card mockup">
+          <div class="mockup-icon">✂️</div>
+          <div class="mockup-title">Barbearia Imperial</div>
+          <div class="mockup-category">Barbearia · Itu/SP</div>
+        </div>
+        <p class="portfolio-result">+240% em agendamentos online</p>
+      </div>
+      <div class="portfolio-card">
+        <div class="glass-card mockup">
+          <div class="mockup-icon">🍽️</div>
+          <div class="mockup-title">Cantina Toscana</div>
+          <div class="mockup-category">Restaurante · Sorocaba/SP</div>
+        </div>
+        <p class="portfolio-result">Reservas lotadas aos finais de semana</p>
+      </div>
+      <div class="portfolio-card">
+        <div class="glass-card mockup">
+          <div class="mockup-icon">💪</div>
+          <div class="mockup-title">Iron House Gym</div>
+          <div class="mockup-category">Academia · Salto/SP</div>
+        </div>
+        <p class="portfolio-result">+180 matrículas no primeiro trimestre</p>
+      </div>
+      <div class="portfolio-card">
+        <div class="glass-card mockup">
+          <div class="mockup-icon">🚗</div>
+          <div class="mockup-title">Prestige Motors</div>
+          <div class="mockup-category">Estética automotiva · Indaiatuba/SP</div>
+        </div>
+        <p class="portfolio-result">Agenda fechada com 3 semanas de espera</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats & Testimonials -->
+  <section id="stats">
+    <div class="container">
+      <p class="eyebrow">Prova social</p>
+      <h2>Quem contratou, <span class="text-gold-gradient">recomenda</span></h2>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Sites entregues</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Clientes satisfeitos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">7 dias</div>
+          <div class="stat-label">Prazo médio de entrega</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24h</div>
+          <div class="stat-label">Seu site vendendo por dia</div>
+        </div>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="glass-card testimonial-card">
+          <div class="testimonial-stars">
+            <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+          </div>
+          <p class="testimonial-quote">"Em duas semanas com o site no ar, a agenda encheu. Cliente novo chega dizendo que escolheu a barbearia pelo site. Melhor investimento que já fiz no negócio."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Rodrigo M.</div>
+            <div class="testimonial-role">Dono de barbearia · Itu/SP</div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="testimonial-stars">
+            <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+          </div>
+          <p class="testimonial-quote">"Eu achava que site era coisa de empresa grande. O pessoal da ARG Vision entregou algo que parece de marca internacional — e coube no meu bolso."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-name">Fernanda C.</div>
+            <div class="testimonial-role">Proprietária de estúdio de beleza · Salto/SP</div>
+          </div>
+        </div>
+
+        <div class="glass-card testimonial-card">
+          <div class="testimonial-stars">
+            <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+          </div>
+          <p class="testimonial-quote">"O site ficou tão bonito que virou meu cartão de visita. Mando o link e o cliente já chega confiando no trabalho. Fechou três orçamentos na primeira semana."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-name">André L.</div>
+            <div class="testimonial-role">Estética automotiva · Indaiatuba/SP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section id="cta">
+    <div class="cta-glow"></div>
+    <div class="cta-content">
+      <p class="eyebrow">Chegou a sua vez</p>
+      <h2>Daqui a um ano, você vai desejar <br>ter <span class="text-gold-gradient">começado hoje.</span></h2>
+      <p>Enquanto você pensa, seu concorrente aparece no Google. Manda uma mensagem agora — em minutos você sabe exatamente quanto custa e quando seu site fica pronto. Sem compromisso.</p>
+      <a href="https://wa.me/5517996501551?text=Olá! Quero meu site premium com a ARG Vision." target="_blank" class="btn btn-primary" style="font-size: 1.1rem; margin-top: 2rem;">
+        💬 Quero meu site premium
+      </a>
+      <p style="font-size: 0.8rem; margin-top: 1.5rem; color: rgba(240,240,240,0.4);">Resposta rápida · Atendimento direto pelo WhatsApp</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="footer-brand">ARG VISION</div>
+        <p class="footer-desc">Websites premium que transformam negócios locais em referências digitais.</p>
+      </div>
+      <div>
+        <ul class="footer-contact">
+          <li>
+            <a href="https://wa.me/5517996501551" target="_blank">
+              <span>💬</span> (17) 99650-1551 — WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href="mailto:alvaro.bellini2@gmail.com">
+              <span>✉️</span> alvaro.bellini2@gmail.com
+            </a>
+          </li>
+          <li>
+            <span>📍</span> Itu — São Paulo, Brasil
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ARG Vision. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+      });
+    });
+
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
