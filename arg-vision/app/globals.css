@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #E6B800;
+  --gold-bright: #FFD700;
+  --night: #000000;
+  --night-soft: #1a1a1a;
+}
+
+html {
+  background: var(--night);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--night);
+}
+
+/* Scrollbar discreta, tema luxo */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--night);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--night-soft);
+  border-radius: 8px;
+  border: 2px solid var(--night);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+@layer components {
+  /* Card glassmorphism — frosted glass, luxury aesthetic */
+  .glass-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-gold {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(230, 184, 0, 0.08);
+    border: 1px solid rgba(230, 184, 0, 0.35);
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 32px rgba(230, 184, 0, 0.12);
+  }
+
+  /* Spinner dourado do SplineScene — nunca tela branca */
+  .loader {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid rgba(230, 184, 0, 0.2);
+    border-top-color: var(--gold);
+    animation: loader-spin 0.9s linear infinite;
+    display: inline-block;
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(120deg, #E6B800 0%, #FFD700 45%, #b8860b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estados iniciais das animações GSAP (evita flash antes do JS) */
+.gsap-fade {
+  opacity: 0;
+}
+.gsap-slide {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.gsap-slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+.gsap-stagger-item {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsap-fade,
+  .gsap-slide,
+  .gsap-slide-right,
+  .gsap-stagger-item {
+    opacity: 1;
+    transform: none;
+  }
+}
