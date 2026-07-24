@@ -1,0 +1,31 @@
+{
+  "description": "Landing page build configuration with design-focused skills",
+  "skills": {
+    "enabled": [
+      "frontend-design",
+      "webapp-testing",
+      "web-artifacts-builder",
+      "dataviz",
+      "artifact-design"
+    ],
+    "recommended": [
+      "frontend-design",
+      "webapp-testing"
+    ]
+  },
+  "design": {
+    "framework": "next.js",
+    "ui-library": "shadcn/ui",
+    "styling": "tailwind",
+    "animation": "framer-motion",
+    "typescript": true
+  },
+  "quality": {
+    "lighthouse_min": 95,
+    "wcag_level": "AA",
+    "responsive_breakpoints": [375, 768, 1440]
+  },
+  "hooks": {
+    "pre_commit": "npm run lint"
+  }
+}
